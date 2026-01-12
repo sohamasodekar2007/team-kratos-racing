@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team 2025-26 | Team Kratos Racing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .department-section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .department-section:last-child {
+            border-bottom: none;
+        }
+        .department-header {
+            margin-bottom: 40px;
+            text-align: left;
+            position: relative;
+            padding-left: 20px;
+        }
+        .department-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .department-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 71, 171, 0.4);
+        }
+        
+        .social-links a i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" style="background: rgba(10, 10, 10, 0.9);">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.png" alt="Team Kratos Racing"></a>
+            
+            <div class="hamburger">
+                 <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="team_2026-27.html" class="dropbtn active">Team</a>
+                    <div class="dropdown-content">
+                        <a href="team_2026-27.html">Team 2026-27</a>
+                        <a href="team_2025-26.html">Team 2025-26</a>
+                        <a href="team_2024-25.html">Team 2024-25</a>
+                        <a href="team_2023-24.html">Team 2023-24</a>
+                    </div>
+                </li>
+                <li><a href="../achievements.html">Achievements</a></li>
+                <li><a href="../sponsors.html">Sponsors</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+
+                <li><a href="../contact.html" class="btn-contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="gradient-overlay"></div>
+        <h1 class="fade-in-up">Team 2025-26</h1>
+        <p class="fade-in-up delay-100" style="position: relative; z-index: 2; color: var(--text-muted); margin-top: 10px;"></p>
+    </header>
+
+    <main>
+        <div class="container">
+            
+            <!-- Management -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Team Management</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img  class="member-img-placeholder" src="https://media.licdn.com/dms/image/v2/D4D03AQEJou-21kJUuQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718213158384?e=1769644800&v=beta&t=o_UCCoEtjVVR_Xg7mmZia3rwxx3ZM7Jt5QXSNl-DN-A" alt="Suraj Aher">
+                                <div class="member-info">
+                                    <h3>Suraj Aher</h3>
+                                    <span>Team Captain</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Suraj Aher</h3>
+                                <p>"Leading with vision and precision."</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/suraj-aher-4690b3292" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img class="member-img-placeholder" src="https://media.licdn.com/dms/image/v2/D4E03AQFXING2RoP3ow/profile-displayphoto-shrink_400_400/B4EZXhbQQ0H0Ag-/0/1743243774492?e=1769644800&v=beta&t=mMp3Rr-UfxcbFTcl_ixvenIlASBr8tB8-yu3X2e93vA" alt="Ram Gokhale">
+                                <div class="member-info">
+                                    <h3>Ram Gokhale</h3>
+                                    <span>Vice Captain</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Ram Gokhale</h3>
+                                <p>"Operational excellence is our habit."</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/ram-gokhale-44065830b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </section>
+
+            <!-- Powertrain -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Powertrain</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #1a1a1a, #2a2a2a)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Powertrain Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Mastering engine performance and tuning.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #222, #111)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Intake & Exhaust</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Optimizing airflow for maximum output.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Cooling Systems</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Keeping temperatures in check under pressure.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chassis -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Chassis</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #333, #444)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Chassis Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Designing the backbone of our machine.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Structural Analysis</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Ensuring safety and rigidity through FEA.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Drivetrain -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Drivetrain</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #0a0a0a, #1a1a1a)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Drivetrain Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Transferring power to the tarmac efficiently.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Transmission Specialist</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Precision shifting and gear ratios.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Vehicle Dynamics -->
+             <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Vehicle Dynamics</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #111, #333)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>VD Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Mastering suspension geometry and handling.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Tire Data Analyst</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Extracting maximum grip from every corner.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aerodynamics -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Aerodynamics</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #222, #444)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Aero Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Shaping the air to our advantage.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>CFD Engineer</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Simulating flow for optimal downforce.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Electronics -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Electronics</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #000, #222)"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Electronics Lead</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Powering the intelligence of the vehicle.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>XYZ</h3>
+                                    <span>Data Acquisition</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>XYZ</h3>
+                                <p>Capturing every millisecond of performance.</p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <a href="../index.html" class="logo"><img src="../logo.png" alt="Team Kratos Racing"></a>
+                <p>#TOGETHER WE RISE!!</p>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Designed for Performance. Built by Engineers.</p>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Team Kratos Racing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

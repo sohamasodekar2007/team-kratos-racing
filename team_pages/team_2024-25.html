@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team 2024-25 | Team Kratos Racing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .department-section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .department-section:last-child {
+            border-bottom: none;
+        }
+        .department-header {
+            margin-bottom: 40px;
+            text-align: left;
+            position: relative;
+            padding-left: 20px;
+        }
+        .department-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .department-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 71, 171, 0.4);
+        }
+        
+        .social-links a i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" style="background: rgba(10, 10, 10, 0.9);">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.png" alt="Team Kratos Racing"></a>
+            
+            <div class="hamburger">
+                 <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="team_2025-26.html" class="dropbtn active">Team</a>
+                    <div class="dropdown-content">
+                        <a href="team_2025-26.html">Team 2025-26</a>
+                        <a href="team_2024-25.html">Team 2024-25</a>
+                        <a href="team_2023-24.html">Team 2023-24</a>
+                    </div>
+                </li>
+                <li><a href="../achievements.html">Achievements</a></li>
+                <li><a href="../sponsors.html">Sponsors</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../contact.html" class="btn-contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="gradient-overlay"></div>
+        <h1 class="fade-in-up">Team 2024-25</h1>
+        <p class="fade-in-up delay-100" style="position: relative; z-index: 2; color: var(--text-muted); margin-top: 10px;">The Champions of 2024</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Content same as template for dummy purpose -->
+            <section class="department-section fade-in-up">
+                <div class="department-header">
+                    <h2 class="department-title">Team Management</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-img-placeholder"></div>
+                                <div class="member-info">
+                                    <h3>Ex-Captain Name</h3>
+                                    <span>Team Captain</span>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Ex-Captain Name</h3>
+                                <p>"Legacy of excellence."</p>
+                                <div class="social-links">
+                                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <a href="../index.html" class="logo"><img src="../logo.png" alt="Team Kratos Racing"></a>
+                <p>#TOGETHER WE RISE!!</p>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Designed for Performance. Built by Engineers.</p>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 Team Kratos Racing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
