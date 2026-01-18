@@ -281,3 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 721102c (Initial commit)
