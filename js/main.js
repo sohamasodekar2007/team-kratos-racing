@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Observe Grids for Staggering
     // We need to add 'stagger-grid' class to containers and 'stagger-item' to children
     // Let's do this dynamically to avoid editing all HTML files manually
-    const grids = document.querySelectorAll('.gallery-grid, .team-grid, .sponsor-grid, .stats-grid');
+    const grids = document.querySelectorAll('.gallery-grid, .team-grid, .sponsor-grid, .stats-grid, .modern-stats-grid');
     grids.forEach(grid => {
         grid.classList.add('stagger-grid'); // Add marker class
         observer.observe(grid); // Observe the container
@@ -242,9 +242,16 @@ document.addEventListener('DOMContentLoaded', () => {
             currentScroll += diff * ease;
             
             let skewForce = diff * 0.15;
+            
+            // Reduce skew on mobile
+            if (window.innerWidth < 768) {
+                skewForce = diff * 0.05; 
+            }
+            
             // Clamp skew
-            if(skewForce > 15) skewForce = 15;
-            if(skewForce < -15) skewForce = -15;
+            const maxSkew = window.innerWidth < 768 ? 5 : 15;
+            if(skewForce > maxSkew) skewForce = maxSkew;
+            if(skewForce < -maxSkew) skewForce = -maxSkew;
 
             // 2. Calculate Centered Position (Parallax)
             // We want the translation to be 0 when the section is in the middle of the viewport
@@ -279,6 +286,39 @@ document.addEventListener('DOMContentLoaded', () => {
         
         requestAnimationFrame(animate);
     }
+
+    // 7. RANDOM ACHIEVEMENTS IMAGES
+    const achievementImages = [
+        'images/landing_image_1.JPG',
+        'images/landing_image_2.JPG',
+        'images/landing_image_3.JPG',
+        'images/landing_image_4.jpg',
+        'images/landing_image_5.jpg',
+        'images/new-race-car.png'
+    ];
+
+    const carImages = document.querySelectorAll('.random-car-img');
+    
+    if (carImages.length > 0) {
+        carImages.forEach(img => {
+            const randomIndex = Math.floor(Math.random() * achievementImages.length);
+            img.src = achievementImages[randomIndex];
+            
+            // Randomly flip some images for variety
+            if (Math.random() > 0.5) {
+                img.style.transform = 'scaleX(-1)';
+                // Note: This might conflict with the hover scale effect.
+                // Better approach: wrap in a div that handles the flip? 
+                // Or just don't flip for now to avoid complexity with the hover zoom.
+                img.style.transform = ''; 
+            }
+        });
+    }
+
+    // 8. DISABLE RIGHT CLICK
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
 
 });
 

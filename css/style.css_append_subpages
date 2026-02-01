@@ -1,0 +1,189 @@
+
+/* =========================================
+   7. SUB-PAGE GLOBAL STYLES (Glassmorphism)
+   ========================================= */
+
+/* --- About Page --- */
+.spec-card {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glass);
+}
+
+.spec-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-glow);
+}
+
+.spec-icon {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.spec-title {
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.spec-value {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.about-block {
+    background: transparent; 
+   /* Keeping it clean, or could add a very subtle backing */
+}
+
+/* --- Achievements Page --- */
+.achieve-card {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.achieve-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+}
+
+.timeline-item {
+    padding-left: 40px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-content {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    border-color: var(--primary);
+}
+
+/* --- Contact Page --- */
+.contact-info, .contact-form {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-glass);
+}
+
+.info-item i {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover i {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.form-group input, 
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(0, 71, 171, 0.1);
+    outline: none;
+}
+
+/* --- Sponsors Page --- */
+.uniform-sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.sponsor-card {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Fixed height */
+    transition: all 0.3s ease;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1); /* Slightly brighter on hover */
+    border-color: var(--primary);
+}
+
+.sponsor-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter:  grayscale(100%) brightness(1.2); /* Make them blend in */
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.sponsor-card:hover .sponsor-logo {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* --- Gallery Page --- */
+.gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    border-color: var(--primary);
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.lightbox {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.8);
+}

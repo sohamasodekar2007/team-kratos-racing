@@ -1,0 +1,47 @@
+
+/* =========================================
+   8. TIMELINE FIX (Achievements Page)
+   ========================================= */
+
+.timeline {
+    position: relative;
+    padding-left: 20px; /* Space for the line */
+}
+
+/* The Vertical Line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;   /* Start slightly down so it aligns with the first dot */
+    bottom: 20px; /* End slightly above the bottom */
+    left: 29px;   /* Align with the dots (adjust based on dot center) */
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), rgba(255, 255, 255, 0.1));
+    z-index: 0;
+}
+
+/* Ensure dots are on top of the line */
+.timeline-dot {
+    position: absolute;
+    left: 20px; /* Align with line */
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.5); /* Contrast border */
+    box-shadow: 0 0 10px var(--primary-glow);
+    z-index: 1;
+}
+
+/* Adjust item spacing to sit next to the line */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    padding-left: 60px; /* Push content right of the line */
+}
+
+/* Remove default dot positioning if it was handled differently before */
+.timeline-item .timeline-dot {
+    top: 5px; /* Align with title */
+    left: 20px;
+}

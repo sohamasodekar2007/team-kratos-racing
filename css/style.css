@@ -2,53 +2,80 @@
    1. GLOBAL VARIABLES & RESET
    ========================================= */
 :root {
-    /* Colors */
-    --bg-dark: #0a0a0a;
-    --bg-darker: #050505;
-    --bg-card: rgba(255, 255, 255, 0.05);
-    --primary: #0047AB;
-    /* Kratos Cobalt Blue */
-    --secondary: #4da6ff;
-    /* Kratos Light Blue Accent */
+    /* =========================
+       1. CORE PALETTE
+       ========================= */
+    --bg-dark: #050505;
+    --bg-darker: #000000;
+    --bg-glass: rgba(5, 5, 5, 0.7);
+    --bg-glass-heavy: rgba(5, 5, 5, 0.9);
+    
+    --primary: #0047AB; /* Kratos Cobalt */
+    --primary-glow: rgba(0, 71, 171, 0.6);
+    --secondary: #4da6ff; /* Electric Blue */
+    --accent: #00e5ff; /* Cyan Highlight */
+    
     --text-main: #ffffff;
-    --text-muted: #a1a1a1;
-    --border-color: rgba(255, 255, 255, 0.1);
+    --text-muted: #a3a3a3;
+    --text-dark: #0a0a0a;
 
-    /* Typography */
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.12);
+
+    /* =========================
+       2. TYPOGRAPHY (Fluid)
+       ========================= */
     --font-heading: 'Batman Forever', 'Orbitron', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
+    
+    /* Clamp: (min, preferred, max) */
+    --fs-h1: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+    --fs-h2: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+    --fs-h3: clamp(1.5rem, 3vw, 2.5rem);
+    --fs-body: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+    --fs-small: clamp(0.875rem, 1vw, 1rem);
 
-    /* Transitions */
-    --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
-    --transition-fast: 0.3s var(--ease-out);
-    --transition-slow: 0.8s var(--ease-out);
+    /* =========================
+       3. EFFECTS
+       ========================= */
+    --glass-blur: blur(16px);
+    --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --shadow-glow: 0 0 20px rgba(0, 71, 171, 0.4);
 }
 
-/* Light Theme Colors */
+/* Light Theme (Preserved but Modernized) */
 body.light-theme {
-    --bg-dark: #ffffff;
-    --bg-darker: #f0f2f5;
-    --bg-card: #f8f9fa;
-    --text-main: #111111;
-    --text-muted: #555555;
-    --border-color: rgba(0, 0, 0, 0.15);
-    --primary: #0047AB;
-    /* Keep primary consistent */
+    --bg-dark: #f4f4f5;
+    --bg-darker: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.75);
+    --bg-glass-heavy: rgba(255, 255, 255, 0.95);
+    
+    --text-main: #18181b;
+    --text-muted: #52525b;
+    
+    --border-light: rgba(0, 0, 0, 0.08);
+    --border-glass: rgba(0, 0, 0, 0.1);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base for rem */
 }
 
 /* Modern Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px; /* Slimmer */
 }
 
 ::-webkit-scrollbar-track {
@@ -57,8 +84,9 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background: #333;
-    border-radius: 5px;
-    border: 2px solid var(--bg-darker);
+    border-radius: 4px;
+    border: 1px solid var(--bg-darker);
+    transition: background 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -67,17 +95,18 @@ html {
 
 body {
     font-family: var(--font-body);
+    font-size: var(--fs-body);
     background-color: var(--bg-dark);
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition-fast);
+    transition: all 0.3s var(--ease-smooth);
 }
 
 ul {
@@ -712,14 +741,17 @@ body, html {
     width: 100%;
     padding: 20px 0;
     z-index: 1000;
-    transition: all 0.4s ease;
+    transition: all 0.4s var(--ease-smooth);
+    background: transparent;
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur); /* Safari */
     padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-glass);
 }
 
 .nav-container {
@@ -838,17 +870,59 @@ body.light-theme .logo img {
 }
 
 /* Ensure mobile menu handles dropdown (simplified for now) */
-@media (max-width: 768px) {
+/* Mobile Menu (Glass Overlay) */
+@media (max-width: 992px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-glass-heavy);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.5s var(--ease-elastic);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.5rem;
+        font-family: var(--font-heading);
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001; /* Above overlay */
+    }
+
+    /* Simplified Dropdown for Mobile */
     .dropdown-content {
         position: static;
         background: transparent;
         box-shadow: none;
         border: none;
-        padding-left: 20px;
+        text-align: center;
+        padding: 10px 0;
         display: none;
+        animation: none;
     }
-    .dropdown:hover .dropdown-content {
+    
+    .dropdown.active .dropdown-content {
         display: block;
+    }
+    
+    .dropdown-content a {
+        font-size: 1.2rem;
+        padding: 8px;
+        color: var(--text-muted);
     }
 }
 
@@ -918,36 +992,39 @@ body.light-theme .moon-icon {
     z-index: 1001;
 }
 
+
+
 .hamburger span {
     display: block;
-    width: 25px;
-    height: 3px;
+    width: 30px;
+    height: 2px;
     background: white;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    border-radius: 2px;
 }
 
 /* Hamburger Animation */
 .hamburger.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
+    transform: translateX(20px);
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .hero-section {
     height: 100vh;
+    min-height: 700px;
     width: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Temporary background until we have video/image */
-    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
     overflow: hidden;
 }
 
@@ -958,6 +1035,15 @@ body.light-theme .moon-icon {
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+/* Gradient Overlay for Video */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 2;
 }
 
 /* Hero Background Video */
@@ -1576,7 +1662,7 @@ body.light-theme .moon-icon {
 
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 1200px; /* Widened for better image display */
     margin: 0 auto;
     padding: 40px 0;
 }
@@ -1598,17 +1684,36 @@ body.light-theme .moon-icon {
     margin-bottom: 50px;
     width: 50%;
     padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .timeline-item:nth-child(even) {
     /* Right side */
     left: 50%;
+    flex-direction: row-reverse; /* Image on right, Content on left? Or match Left side? */
+    /* Let's keep Image -> Content order for both? */
+    /* If row-reverse: [Content] [Image] | Axis */
+    /* If row: | Axis [Image] [Content] */
+    /* User said "side not up". Let's try Image close to Axis for visual symmetry? */
+    /* Left Side: [Content] [Image] | Axis */
+    /* Right Side: Axis | [Image] [Content] */
+    /* Currently DOM is [Image] [Content]. */
+    /* So Left Side needs row-reverse? No, Left Side is text-align right. */
+    /* Let's try: */
+    /* Left Side: flexDirection: row-reverse (Content Left, Image Right (near axis)). */
+    /* Right Side: flexDirection: row (Image Left (near axis), Content Right). */
+    /* This creates a nice center spine of images. */
+    flex-direction: row; 
+    text-align: left;
 }
 
 .timeline-item:nth-child(odd) {
     /* Left side */
     left: 0;
     text-align: right;
+    flex-direction: row-reverse; /* Content Left, Image Right (Near Axis) */
 }
 
 .timeline-dot {
@@ -1635,7 +1740,9 @@ body.light-theme .moon-icon {
     border-radius: 4px;
     border: 1px solid var(--border-color);
     transition: transform 0.3s;
+    flex: 1; /* Take remaining space */
 }
+
 
 .timeline-content:hover {
     transform: translateY(-5px);
@@ -1688,7 +1795,62 @@ body.light-theme .moon-icon {
     .timeline-item:nth-child(even) .timeline-dot {
         left: 21px;
     }
+
+    /* Mobile Timeline Fixes */
+    .timeline-item {
+        flex-direction: column; /* Stack on mobile for better space */
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd) {
+        flex-direction: column; /* Ensure stack override */
+        text-align: left;
+    }
+
+    .timeline-img {
+        width: 100%; /* Full width on mobile */
+        height: 200px;
+        margin-bottom: 10px; /* Add space below image */
+    }
+
 }
+
+/* Timeline Image Styles */
+/* Timeline Image Styles */
+.timeline-img {
+    flex: 0 0 45%; /* Take 45% of the item width */
+    height: 220px; /* Taller image */
+    border-radius: 8px;
+    overflow: hidden;
+    /* margin-bottom: 20px; Removed for side layout */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    background: #111;
+}
+
+.timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* filter: grayscale(40%); REMOVED per user request */
+}
+
+.timeline-item:hover .timeline-img img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* Add a glowing border effect on hover for the image container */
+.timeline-item:hover .timeline-img {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 71, 171, 0.3);
+}
+
+
 
 .sponsor-tier {
     margin-bottom: 3rem;
@@ -3955,5 +4117,14 @@ body.light-theme .hamburger span {
     }
     100% {
         transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* Mobile override for Timeline Images to ensure full width */
+@media (max-width: 768px) {
+    .timeline-img {
+        width: 100%;
+        flex: none; /* Reset flex sizing */
+        height: 200px; /* Adjust height for mobile if needed */
     }
 }

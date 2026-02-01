@@ -11,7 +11,7 @@
     <!-- Batman Forever Font -->
     <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -205,24 +205,24 @@
                 </div>
                 
                 <div class="modern-stats-grid stagger-grid">
-                    <!-- Stat 1: Total Awards -->
+
+                    <!-- Stat 4: Cars Built -->
                     <div class="modern-stat-card fade-in-up stagger-item">
                         <div class="stat-icon-wrapper">
-                            <div class="stat-icon awards-icon">
+                            <div class="stat-icon cars-icon">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M3 8L12 3L21 8V16L12 21L3 16V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 3V21M3 8L12 13M12 13L21 8M12 13V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
-                            <div class="stat-glow awards-glow"></div>
+                            <div class="stat-glow cars-glow"></div>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number" data-target="57">0</span>
+                            <span class="stat-number" data-target="8">0</span>
                             <span class="stat-plus">+</span>
-                            <span class="stat-label">Total Awards Won</span>
+                            <span class="stat-label">Cars Built</span>
                             <div class="stat-bar">
-                                <div class="stat-bar-fill awards-bar"></div>
+                                <div class="stat-bar-fill cars-bar"></div>
                             </div>
                         </div>
                     </div>
@@ -239,11 +239,33 @@
                             <div class="stat-glow competitions-glow"></div>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-number" data-target="16">0</span>
                             <span class="stat-plus">+</span>
                             <span class="stat-label">Competitions</span>
                             <div class="stat-bar">
                                 <div class="stat-bar-fill competitions-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 1: Total Awards -->
+                    <div class="modern-stat-card fade-in-up stagger-item">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon awards-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="stat-glow awards-glow"></div>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" data-target="58">0</span>
+                            <span class="stat-plus">+</span>
+                            <span class="stat-label">Total Awards Won</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill awards-bar"></div>
                             </div>
                         </div>
                     </div>
@@ -268,26 +290,7 @@
                         </div>
                     </div>
 
-                    <!-- Stat 4: Cars Built -->
-                    <div class="modern-stat-card fade-in-up stagger-item">
-                        <div class="stat-icon-wrapper">
-                            <div class="stat-icon cars-icon">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 8L12 3L21 8V16L12 21L3 16V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 3V21M3 8L12 13M12 13L21 8M12 13V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="stat-glow cars-glow"></div>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-number" data-target="8">0</span>
-                            <span class="stat-plus">+</span>
-                            <span class="stat-label">Cars Built</span>
-                            <div class="stat-bar">
-                                <div class="stat-bar-fill cars-bar"></div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -318,7 +321,7 @@
                     <!-- Text first in DOM, reversed by CSS -->
                     <div class="card-text">
                         <h2>Masterful<br><span style="color: var(--secondary);">Craftsmanship</span></h2>
-                        <p>From carbon fiber weaving to chassis welding, our manufacturing process creates the backbone of champions. We blend traditional craftsmanship with advanced composites to create lightweight, durable machines.</p>
+                        <p>From precision carbon fiber layups to expert chassis fabrication, Team Kratos Racing engineers the foundation of a true race machine. We fuse hands-on engineering skill with cutting-edge composite technology to build cars that are lighter, stronger, and built to perform at the limit.</p>
                         <a href="team_pages/team_2025-26.html" class="card-btn">The Team <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="card-visual">
@@ -415,32 +418,32 @@
                 </div>
                 <div class="achieve-grid stagger-grid">
                     <div class="achieve-card">
-                        <i class="fas fa-globe-asia"></i>
+                        
                         <h3>World Rank 7</h3>
                         <p>In Formula Student Germany 2023 (Electric).</p>
                     </div>
                     <div class="achieve-card">
-                        <i class="fas fa-trophy"></i>
+                        
                         <h3>7x National Champions</h3>
                         <p>Consistent dominance on the Indian track.</p>
                     </div>
                     <div class="achieve-card">
-                        <i class="fas fa-history"></i>
+                        
                         <h3>World Record</h3>
                         <p>3 Times Consecutive National Champions.</p>
                     </div>
                     <div class="achieve-card">
-                        <i class="fas fa-car-side"></i>
+                        
                         <h3>Engineering Excellence</h3>
                         <p>8 Cars, 2 Go-Karts, 57 Awards, 15 Competitions.</p>
                     </div>
                     <div class="achieve-card">
-                        <i class="fas fa-plane-departure"></i>
+                        
                         <h3>Global Presence</h3>
                         <p>Represented India at FS East & FS Germany.</p>
                     </div>
                     <div class="achieve-card">
-                        <i class="fas fa-bolt"></i>
+                        
                         <h3>Electric Innovation</h3>
                         <p>AIR 16 in FSG Electric Category.</p>
                     </div>
@@ -467,13 +470,13 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                            <p style="margin-bottom: 2px; font-weight: 600; color: var(--primary);">Rohit Sawant (Captain)</p>
-                            <p>+91 87664 95657</p>
+                            <p style="margin-bottom: 2px; font-weight: 600; color: var(--primary);">Suraj Aher (Captain)</p>
+                            <p>+91 82085 20205</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                            <p style="margin-bottom: 2px; font-weight: 600; color: var(--primary);">Upendra Patil (Vice Captain)</p>
-                            <p>+91 73854 15304</p>
+                            <p style="margin-bottom: 2px; font-weight: 600; color: var(--primary);">Ram Gokhale (Vice Captain)</p>
+                            <p>+91 70208 84080</p>
                     </div>
 
                     <div class="social-links big-socials">

@@ -1,0 +1,156 @@
+
+/* =========================================
+   5. STATS SECTION (Glassmorphism Upgrade)
+   ========================================= */
+.modern-stats-section {
+    padding: 100px 0;
+    position: relative;
+    /* Subtle background accent */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 71, 171, 0.03) 0%, transparent 60%);
+}
+
+.modern-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.modern-stat-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 20px;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--ease-elastic), box-shadow 0.4s ease, border-color 0.4s ease;
+    text-align: center;
+    /* Glass Reflection setup */
+}
+
+.modern-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.modern-stat-card:hover::before {
+    left: 100%;
+}
+
+.modern-stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-glass), var(--shadow-glow);
+    border-color: rgba(77, 166, 255, 0.3);
+}
+
+.stat-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--secondary);
+    z-index: 2;
+}
+
+.stat-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.stat-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.modern-stat-card:hover .stat-glow {
+    opacity: 0.6;
+}
+
+.stat-content {
+    position: relative;
+    z-index: 2;
+}
+
+.stat-number {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 4vw, 4.5rem); /* Fluid font size */
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 5px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.stat-plus {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    vertical-align: top;
+}
+
+.stat-label {
+    display: block;
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.stat-bar {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px auto 0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: width 1s ease-out;
+}
+
+.modern-stat-card:hover .stat-bar-fill {
+    width: 100%;
+}
+
+/* Featured Stat (Rank) */
+.modern-stat-card.featured-stat {
+    border-color: rgba(255, 215, 0, 0.2); /* Gold hint */
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.05) 0%, rgba(0,0,0,0) 100%);
+}
+
+.modern-stat-card.featured-stat .stat-number {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
