@@ -1912,7 +1912,38 @@ body.light-theme .moon-icon {
     padding: 20px;
 }
 
-.sponsor-card:hover {
+/* Flash/Glow Effect for Sponsor Cards */
+.sponsor-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    animation: sponsorFlash 6s infinite;
+}
+
+@keyframes sponsorFlash {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    50% { opacity: 0.1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.sponsor-card:hover::before {
+    opacity: 0.25;
+    animation: none; /* Steady glow on hover */
+    width: 200%;
+    height: 200%;
+}
+
+.sponsor-card img {
+    position: relative;
+    z-index: 1; /* Ensure image stays above the flash */
     filter: grayscale(0%);
     opacity: 1;
     border-color: var(--primary);
@@ -1925,6 +1956,7 @@ body.light-theme .moon-icon {
     max-height: 80%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    /* Removed redundant z-index here since it's defined above */
 }
 
 .sponsor-card:hover img {
