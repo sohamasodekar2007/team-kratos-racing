@@ -4186,3 +4186,47 @@ letter-spacing: 1px;
 font-family: 'Batman Forever', sans-serif;
 letter-spacing: 3px;
 }
+/* MOBILE RESPONSIVE */
+
+@media (max-width:768px){
+
+.team-grid{
+grid-template-columns:1fr;
+}
+
+.team-card{
+flex-direction:column;
+height:auto;
+}
+
+.card-img{
+width:100%;
+height:180px;
+}
+
+.card-info{
+width:100%;
+text-align:center;
+}
+
+.department-title{
+font-size:22px;
+letter-spacing:2px;
+}
+
+.department-desc{
+font-size:13px;
+}
+
+}
+@media (max-width:600px){
+
+.team-section{
+padding:60px 15px;
+}
+
+.department{
+margin-bottom:60px;
+}
+
+}
