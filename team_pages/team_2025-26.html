@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Batman Forever Font -->
-    <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Style -->
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .department-section {
             padding: 40px 0;
@@ -55,6 +55,101 @@
             justify-content: center;
             margin-top: 20px;
         }
+        body{
+background: radial-gradient(circle at top,#1a2238,#050a18);
+font-family: 'Orbitron', sans-serif;
+color:white;
+}
+
+/* SECTION */
+
+.team-section{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+/* DEPARTMENT */
+
+.department{
+margin-bottom:80px;
+text-align:center;
+}
+
+.department-title{
+font-size:28px;
+letter-spacing:4px;
+margin-bottom:15px;
+}
+
+.department-desc{
+max-width:750px;
+margin:auto;
+font-size:14px;
+color:#9aa4b2;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+/* GRID */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+/* CARD */
+
+.team-card{
+display:flex;
+height:140px;
+border-radius:14px;
+overflow:hidden;
+
+background:linear-gradient(
+135deg,
+#0080ff,
+#132f52
+);
+
+transition:0.3s;
+}
+
+.team-card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* IMAGE */
+
+.card-img{
+width:40%;
+background-size:cover;
+background-position:center;
+}
+
+/* INFO */
+
+.card-info{
+width:60%;
+padding:18px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:left;
+}
+
+.card-info h3{
+font-size:13px;
+letter-spacing:2px;
+margin-bottom:5px;
+}
+
+.card-info p{
+font-size:12px;
+color:#b6c2d4;
+}
         
         .social-links a {
             display: inline-flex;
@@ -123,356 +218,314 @@
     <main>
         <div class="container">
             
-            <!-- Management -->
-            <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Team Management</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>Rohit Sawant</h3>
-                                    <span>Team Captain</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Rohit Sawant</h3>
-                                <p>"Leading with vision and precision."</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/rohitsawant" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/rohitsawant" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #222, #333)"></div>
-                                <div class="member-info">
-                                    <h3>Upendra Patil</h3>
-                                    <span>Vice Captain</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Upendra Patil</h3>
-                                <p>"Operational excellence is our habit."</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/upendrapatil" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/upendrapatil" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            </section>
+            <section class="team-section">
 
-            <!-- Powertrain -->
-            <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Powertrain</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #1a1a1a, #2a2a2a)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Powertrain Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Mastering engine performance and tuning.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #222, #111)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Intake & Exhaust</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Optimizing airflow for maximum output.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Cooling Systems</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Keeping temperatures in check under pressure.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Chassis -->
-            <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Chassis</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #333, #444)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Chassis Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Designing the backbone of our machine.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Structural Analysis</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Ensuring safety and rigidity through FEA.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<!-- =====MANAGEMENT ===== -->
+
+<div class="department">
+
+<h2 class="department-title">MANAGEMENT</h2>
+
+<p class="department-desc">
+Strategic coordination and structured planning form the backbone 
+of our management team, ensuring every department operates in 
+perfect synchronization toward a common goal
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/7t3pwZJn/Copy-of-TOGETHERWERISE-4.png')"></div>
+<div class="card-info">
+<h3>UPENDRA PATIL</h3>
+<p>MECHANICAL CTO</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/YBJtYZkn/Copy-of-TOGETHERWERISE-6.png')"></div>
+<div class="card-info">
+<h3>ROHIT SAWANT</h3>
+<p>CAPTAIN AND CFO</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/hvjXpWV/Copy-of-TOGETHERWERISE-3.png')"></div>
+<div class="card-info">
+<h3>PARTH DALAL</h3>
+<p>ELECTRICAL CTO</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+
+<!-- ===== ELECTRONICS ===== -->
+
+<div class="department">
+
+<h2 class="department-title">ELECTRONICS</h2>
+
+<p class="department-desc">
+Our car is basically a computer on wheels. Many high voltage electronics
+engineers work together to make sure everything runs safely and efficiently.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>SOHAM MALI </h3>
+<p> HIGH VOLTAGE LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/dwCvZ2vk/TOGETHERWERISE-6.jpg')"></div>
+<div class="card-info">
+<h3>SHRAWANI KULTHE</h3>
+<p>SR.LOW VOLTAGE MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>HARSHAD CHOUDHAR</h3>
+<p>SR. HIGH VOLTAGE AND COOLING MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/N6T3Qdnh/TOGETHERWERISE-7.jpg')"></div>
+<div class="card-info">
+<h3>KSHITIJ </h3>
+<p>B- PLAN MEMBER AND HIGH VOLTAGE MEMBER</p>
+</div>
+
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>ANIKET NANNAWARE</h3>
+<p>LOW VOLTAGE MEMBER</p>
+</div>
+
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>TANMAY RAWALE</h3>
+<p>LOW VOLTAGE MEMBER</p>
+</div>
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>MAYUR KHALUSE</h3>
+<p>LOW VOLTAGE MEMBER</p>
+</div>
+
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>VEDANT PAWAR</h3>
+<p>LOW VOLTAGE MEMBER</p>
+</div>
+</div>
+</section>
+
+         
+<!-- ===== chasis===== -->   
+           <div class="department">
+
+<h2 class="department-title">STRUCTURES</h2>
+
+<p class="department-desc">
+The chassis forms the structural backbone of the race car, ensuring
+strength, safety and rigidity while maintaining minimal weight.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/Rp6xZYDn/Copy-of-TOGETHERWERISE-5.png')"></div>
+<div class="card-info">
+<h3>SURAJ AHER</h3>
+<p>CHASSIS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>SATYJEETMANE DESHMUKH </h3>
+<p>AERODYNAMICS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/pj95nZ5C/TOGETHERWERISE-11.jpg')"></div>
+<div class="card-info">
+<h3>KEDAR KHAJAVE </h3>
+<p>SR.AERODYNAMICS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/ymv9ncdR/TOGETHERWERISE-1.jpg')"></div>
+<div class="card-info">
+<h3>HARSHWARDHAN PATIL</h3>
+<p>SR.CHASSIS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>RAM GOKHALE</h3>
+<p>SR.AERODYNAMICS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/0pPBpyf3/TOGETHERWERISE-3.jpg')"></div>
+<div class="card-info">
+<h3>RISHABH BAN</h3>    
+<p>JR.CHASSIS MEMBER</p>
+</div>
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>ANUJA HARNE</h3>
+<p>JR.AERODYNAMICS MEMBER</p>
+</div>
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>JR.SIDDHANT REWANKAR</h3>
+<p>AERODYNAMICS MEMBER</p>
+</div></div>
+
+</div>
+</div>
+
 
             <!-- Drivetrain -->
             <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Drivetrain</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #0a0a0a, #1a1a1a)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Drivetrain Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Transferring power to the tarmac efficiently.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Transmission Specialist</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Precision shifting and gear ratios.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="department">
+
+<h2 class="department-title">DRIVETRAIN</h2>
+
+<p class="department-desc">
+The drivetrain ensures efficient power transmission from the motor
+to the wheels for optimal acceleration and performance.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>OMKAR BIRADAR</h3>
+<p>DRIVETRAIN LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>MAHESH SONUNE</h3>
+<p>SR.DRIVETRAIN MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>AAYESHA SURVE</h3>
+<p>JR.DRIVETRAIN MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>RUDRA UMATE </h3>
+<p>JR.DRIVETRAIN MEMBER</p>
+</div>
+</div>
+
+</div>
+</div>
             </section>
 
              <!-- Vehicle Dynamics -->
              <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Vehicle Dynamics</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #111, #333)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>VD Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Mastering suspension geometry and handling.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Tire Data Analyst</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Extracting maximum grip from every corner.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <div class="department">
 
-            <!-- Aerodynamics -->
-            <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Aerodynamics</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #222, #444)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Aero Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Shaping the air to our advantage.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>CFD Engineer</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Simulating flow for optimal downforce.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<h2 class="department-title">VEHICLE DYNAMICS</h2>
 
-            <!-- Electronics -->
-            <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Electronics</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder" style="background:linear-gradient(45deg, #000, #222)"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Electronics Lead</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Powering the intelligence of the vehicle.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>XYZ</h3>
-                                    <span>Data Acquisition</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>XYZ</h3>
-                                <p>Capturing every millisecond of performance.</p>
-                                <div class="social-links">
-                                    <a href="https://linkedin.com/in/XYZ" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://instagram.com/XYZ" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<p class="department-desc">
+The drivetrain ensures efficient power transmission from the motor
+to the wheels for optimal acceleration and performance.
+</p>
 
-        </div>
-    </main>
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>DHRUVA DAMLE</h3>
+<p>VEHICLE DYNAMICS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>NARAYANEE FARKHADE</h3>
+<p>STEERING LEAD</p>
+</div>
+</div>
+
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>ARCHIT SAOKAR</h3>
+<p>SR.SUSPENSION MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>DEVDATT LAMBE</h3>
+<p>SR.STEERING MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>VEDANT GARUDE</h3>
+<p>JR.VEHICLE DYNAMICS MEMBER</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+            
+
+            </section>
+        </main>
 
     <footer>
         <div class="container footer-content">
