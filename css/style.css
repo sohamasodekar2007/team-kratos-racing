@@ -4171,3 +4171,18 @@ body.light-theme .hamburger span {
         height: 200px; /* Adjust height for mobile if needed */
     }
 }
+
+.nav-links a{
+font-family: 'Batman Forever', sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;
+font-size: 0.85rem;
+}
+.dropdown-content a{
+font-family: 'Batman Forever', sans-serif;
+letter-spacing: 1px;
+}
+.logo{
+font-family: 'Batman Forever', sans-serif;
+letter-spacing: 3px;
+}
