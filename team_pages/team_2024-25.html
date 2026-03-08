@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team 2024-25 | Team Kratos Racing</title>
+    <title>Team 2025-26 | Team Kratos Racing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Batman Forever Font -->
-    <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Style -->
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .department-section {
             padding: 40px 0;
@@ -55,6 +55,101 @@
             justify-content: center;
             margin-top: 20px;
         }
+        body{
+background: radial-gradient(circle at top,#1a2238,#050a18);
+font-family: 'Orbitron', sans-serif;
+color:white;
+}
+
+/* SECTION */
+
+.team-section{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+/* DEPARTMENT */
+
+.department{
+margin-bottom:80px;
+text-align:center;
+}
+
+.department-title{
+font-size:28px;
+letter-spacing:4px;
+margin-bottom:15px;
+}
+
+.department-desc{
+max-width:750px;
+margin:auto;
+font-size:14px;
+color:#9aa4b2;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+/* GRID */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+/* CARD */
+
+.team-card{
+display:flex;
+height:140px;
+border-radius:14px;
+overflow:hidden;
+
+background:linear-gradient(
+135deg,
+#0080ff,
+#132f52
+);
+
+transition:0.3s;
+}
+
+.team-card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* IMAGE */
+
+.card-img{
+width:40%;
+background-size:cover;
+background-position:center;
+}
+
+/* INFO */
+
+.card-info{
+width:60%;
+padding:18px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:left;
+}
+
+.card-info h3{
+font-size:13px;
+letter-spacing:2px;
+margin-bottom:5px;
+}
+
+.card-info p{
+font-size:12px;
+color:#b6c2d4;
+}
         
         .social-links a {
             display: inline-flex;
@@ -108,6 +203,7 @@
                 <li><a href="../achievements.html">Achievements</a></li>
                 <li><a href="../sponsors.html">Sponsors</a></li>
                 <li><a href="../gallery.html">Gallery</a></li>
+
                 <li><a href="../contact.html" class="btn-contact">Contact</a></li>
             </ul>
         </div>
@@ -115,40 +211,337 @@
 
     <header class="page-header">
         <div class="gradient-overlay"></div>
-        <h1 class="fade-in-up">Team 2024-25</h1>
-        <p class="fade-in-up delay-100" style="position: relative; z-index: 2; color: var(--text-muted); margin-top: 10px;">The Champions of 2024</p>
+        <h1 class="fade-in-up">Team 2025-26</h1>
+        <p class="fade-in-up delay-100" style="position: relative; z-index: 2; color: var(--text-muted); margin-top: 10px;"></p>
     </header>
 
     <main>
         <div class="container">
-            <!-- Content same as template for dummy purpose -->
+            
+            <section class="team-section">
+
+
+<!-- =====MANAGEMENT ===== -->
+
+<div class="department">
+
+<h2 class="department-title">MANAGEMENT</h2>
+
+<p class="department-desc">
+Strategic coordination and structured planning form the backbone 
+of our management team, ensuring every department operates in 
+perfect synchronization toward a common goal
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>OM LONKAR</h3>
+<p>COO</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>INVESH SONAR</h3>
+<p>CAPTAIN </p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/v6dHns6Y/TOGETHERWERISE-4.png')"></div>
+<div class="card-info">
+<h3>RUTURAJ PATIL</h3>
+<p>CFO </p>
+</div>
+</div>
+
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>HARIKRISHNAN </h3>
+<p>ELECRICAL CTO</p>
+</div>
+</div>
+
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/rRpTHSX0/TOGETHERWERISE-1.png')"></div>
+<div class="card-info">
+<h3>AADINATH KELKAR</h3>
+<p>MECHANICAL CTO</p>
+</div>+
+</div>
+
+
+
+</div>
+</div>
+
+
+<!-- ===== ELECTRONICS ===== -->
+
+<div class="department">
+
+<h2 class="department-title">ELECTRONICS</h2>
+
+<p class="department-desc">
+Our car is basically a computer on wheels. Many high voltage electronics
+engineers work together to make sure everything runs safely and efficiently.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/67QfkLQ4/TOGETHERWERISE-3.png')"></div>
+<div class="card-info">
+<h3>MANISH MAITY </h3>
+<p> HIGH VOLTAGE LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/0Vv4TKNj/TOGETHERWERISE-2.png')"></div>
+<div class="card-info">
+<h3>RADHA KARALE </h3>
+<p>LOW VOLTAGE LEAD </p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>NIRBHIK NAVIN</h3>
+<p>DRIVERLESS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>SOHAM PATIL </h3>
+<p>SR.LOW VOLTAGE MEMBER</p>
+</div>
+
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>SOHAM MALI</h3>
+<p>HIGH VOLTAGE MEMBER</p>
+</div>
+
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/dwCvZ2vk/TOGETHERWERISE-6.jpg')"></div>
+<div class="card-info">
+<h3>SHRAWANI KULTHE</h3>
+<p>LOW VOLTAGE MEMBER</p>
+</div>
+</div>
+</div>
+</section>
+
+         
+<!-- ===== chasis===== -->   
+           <div class="department">
+
+<h2 class="department-title">STRUCTURES</h2>
+
+<p class="department-desc">
+The chassis forms the structural backbone of the race car, ensuring
+strength, safety and rigidity while maintaining minimal weight.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/rRpTHSX0/TOGETHERWERISE-1.png')"></div>
+<div class="card-info">
+<h3>AADINATH KELKAR</h3>
+<p>CHASSIS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/v6dHns6Y/TOGETHERWERISE-4.png')"></div>
+<div class="card-info">
+<h3>RUTURAJ PATIL</h3>
+<p>COMPOSITE LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/yFXnYZPH/TOGETHERWERISE-5.png')"></div>
+<div class="card-info">
+<h3>DHRUV BHATT</h3>
+<p>AERODYNAMICS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/YBJtYZkn/Copy-of-TOGETHERWERISE-6.png')"></div>
+<div class="card-info">
+<h3>ROHIT SAWANT </h3>
+<p>SR.CHASSIS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/7t3pwZJn/Copy-of-TOGETHERWERISE-4.png')"></div>
+<div class="card-info">
+<h3>UPENDRA PATIL</h3>
+<p>SR.CHASSIS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/PGgJ2CxX/TOGETHERWERISE-10.jpg')"></div>
+<div class="card-info">
+<h3>SURAJ AHER</h3>
+<p>JR. CHASSIS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/ymv9ncdR/TOGETHERWERISE-1.jpg')"></div>
+<div class="card-info">
+<h3>HARSHWARDHAN PATIL</h3>    
+<p>JR.CHASSIS MEMBER</p>
+</div>
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>SATYJEETMANE DESHMUKH</h3>
+<p>JR.AERODYNAMICS MEMBER</p>
+</div>
+</div><div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>RAM GOKHALE</h3>
+<p>JR.AERODYNAMICS MEMBER</p>
+</div></div>
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/pj95nZ5C/TOGETHERWERISE-11.jpg')"></div>
+<div class="card-info">
+<h3>KEDAR KHAJAVE</h3>
+<p>JR. AERODYNAMICS MEMBER</p>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+            <!-- Drivetrain -->
             <section class="department-section fade-in-up">
-                <div class="department-header">
-                    <h2 class="department-title">Team Management</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="member-img-placeholder"></div>
-                                <div class="member-info">
-                                    <h3>Ex-Captain Name</h3>
-                                    <span>Team Captain</span>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Ex-Captain Name</h3>
-                                <p>"Legacy of excellence."</p>
-                                <div class="social-links">
-                                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="department">
+
+<h2 class="department-title">DRIVETRAIN</h2>
+
+<p class="department-desc">
+The drivetrain ensures efficient power transmission from the motor
+to the wheels for optimal acceleration and performance.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>YASHWANT KAMBLE</h3>
+<p>DRIVETRAIN LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>MAHESH SONUNE</h3>
+<p>SR.DRIVETRAIN MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>OMKAR BIRADAR</h3>
+<p>SR.DRIVETRAIN MEMBER</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
             </section>
-        </div>
-    </main>
+
+             <!-- Vehicle Dynamics -->
+             <section class="department-section fade-in-up">
+                <div class="department">
+
+<h2 class="department-title">VEHICLE DYNAMICS</h2>
+
+<p class="department-desc">
+The drivetrain ensures efficient power transmission from the motor
+to the wheels for optimal acceleration and performance.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>HRISHIKESH BARPANDE</h3>
+<p>VEHICLE DYNAMICS LEAD</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>NARAYANEE FARKHADE</h3>
+<p>SR.VEHICLE DYNAMICS MEMBER</p>
+</div>
+</div>
+
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>DHRUVA DAMLE</h3>
+<p>SR.VEHICLE DYNAMICS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>DEVDATT LAMBE</h3>
+<p>JR.VEHICLE DYNAMICS MEMBER</p>
+</div>
+</div>
+
+<div class="team-card">
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
+<div class="card-info">
+<h3>ARCHIT SAOKAR</h3>
+<p>JR.VEHICLE DYNAMICS MEMBER</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+            
+
+            </section>
+        </main>
 
     <footer>
         <div class="container footer-content">
