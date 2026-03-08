@@ -4277,3 +4277,22 @@ grid-template-columns:1fr;
 }
 
 }
+/* Captain Center */
+
+.captain-card{
+display:flex;
+justify-content:center;
+margin-bottom:40px;
+}
+
+.captain-card .team-card{
+width:320px;
+}
+
+/* Other Members Grid */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
