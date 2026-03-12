@@ -10,15 +10,534 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap"
         rel="stylesheet">
-    <!-- Batman Forever Font -->
     <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================= */
+        /* CUSTOM ACHIEVEMENTS STYLES */
+        /* ============================= */
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #00d4ff;
+            --accent-warm: #ff6b35;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --success: #10b981;
+            --highlight: #fbbf24;
+        }
+
+        .section {
+            position: relative;
+        }
+
+        .achievements-section {
+            padding: 80px 40px;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.02) 0%, rgba(255, 107, 53, 0.02) 100%);
+            position: relative;
+        }
+
+        .achievements-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .achievements-section::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 10s ease-in-out infinite 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(20px, -20px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================= */
+        /* SECTION HEADER */
+        /* ============================= */
+        .achievement-header {
+            text-align: center;
+            margin-bottom: 80px;
+            opacity: 0;
+            animation: slideInDown 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievement-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-family: 'Space Grotesk', sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ============================= */
+        /* ACHIEVEMENTS GRID */
+        /* ============================= */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* ============================= */
+        /* ACHIEVEMENT CARD */
+        /* ============================= */
+        .achievement-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .achievement-card:nth-child(1) { animation-delay: 0.1s; }
+        .achievement-card:nth-child(2) { animation-delay: 0.15s; }
+        .achievement-card:nth-child(3) { animation-delay: 0.2s; }
+        .achievement-card:nth-child(4) { animation-delay: 0.25s; }
+        .achievement-card:nth-child(5) { animation-delay: 0.3s; }
+        .achievement-card:nth-child(6) { animation-delay: 0.35s; }
+        .achievement-card:nth-child(7) { animation-delay: 0.4s; }
+        .achievement-card:nth-child(8) { animation-delay: 0.45s; }
+        .achievement-card:nth-child(9) { animation-delay: 0.5s; }
+        .achievement-card:nth-child(10) { animation-delay: 0.55s; }
+        .achievement-card:nth-child(11) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 212, 255, 0.15) 50%, 
+                transparent 100%);
+            transition: left 0.8s ease;
+            z-index: 2;
+        }
+
+        .achievement-card:hover::before {
+            left: 100%;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================= */
+        /* CARD YEAR BADGE */
+        /* ============================= */
+        .card-year {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: rgba(0, 212, 255, 0.15);
+            border: 1.5px solid var(--accent);
+            padding: 8px 16px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover .card-year {
+            background: rgba(0, 212, 255, 0.25);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* ============================= */
+        /* CARD IMAGE */
+        /* ============================= */
+        .card-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .achievement-card:hover .card-image img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.3) 100%);
+            z-index: 1;
+        }
+
+        /* ============================= */
+        /* CARD CONTENT */
+        /* ============================= */
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-rank {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--highlight);
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid var(--highlight);
+            padding: 5px 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover .card-rank {
+            background: rgba(251, 191, 36, 0.2);
+            transform: translateX(5px);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .achievement-card:hover .card-title {
+            color: var(--accent);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        /* ============================= */
+        /* ACHIEVEMENT STATS */
+        /* ============================= */
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--success);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover .stat-badge {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+            transform: translateY(-2px);
+        }
+
+        .stat-badge i {
+            font-size: 0.9rem;
+        }
+
+        /* ============================= */
+        /* CARD FOOTER */
+        /* ============================= */
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            border-radius: 10px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .achievement-card:hover .card-arrow {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* ============================= */
+        /* TIMELINE ACCENT */
+        /* ============================= */
+        .achievements-timeline {
+            position: relative;
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, 
+                var(--accent) 0%, 
+                var(--accent-warm) 50%, 
+                var(--accent) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-milestone {
+            position: relative;
+            padding: 40px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 500px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-milestone::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            z-index: 10;
+        }
+
+        .timeline-milestone h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .timeline-milestone p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ============================= */
+        /* RESPONSIVE DESIGN */
+        /* ============================= */
+        @media (max-width: 1024px) {
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+            }
+
+            .achievement-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .achievements-section {
+                padding: 60px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .achievement-header h2 {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+
+            .card-image {
+                height: 150px;
+            }
+
+            .achievements-section {
+                padding: 40px 20px;
+            }
+
+            .achievement-header {
+                margin-bottom: 50px;
+            }
+
+            .timeline-line {
+                display: none;
+            }
+
+            .achievements-timeline {
+                margin-top: 60px;
+            }
+
+            .timeline-milestone {
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .achievement-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .achievements-section::before {
+                width: 250px;
+                height: 250px;
+                top: -50px;
+                right: -50px;
+            }
+
+            .achievements-section::after {
+                width: 300px;
+                height: 300px;
+                bottom: -80px;
+                left: -80px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- NAVBAR (Original) -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo"><img src="logo.png" alt="Team Kratos Racing"></a>
@@ -35,7 +554,7 @@
                 <li class="dropdown">
                     <a href="team_pages/team_2026-27.html" class="dropbtn">Team</a>
                     <div class="dropdown-content">
-                        <a href="team_pages/team_2026-27.html">Team 2025-26</a>
+                        <a href="team_pages/team_2026-27.html">Team 2026-27</a>
                         <a href="team_pages/team_2025-26.html">Team 2025-26</a>
                         <a href="team_pages/team_2024-25.html">Team 2024-25</a>
                         <a href="team_pages/team_2023-24.html">Team 2023-24</a>
@@ -49,184 +568,264 @@
         </div>
     </nav>
 
+    <!-- PAGE HEADER (Original) -->
     <header class="page-header">
         <div class="gradient-overlay"></div>
         <h1 class="fade-in-up">Our Achievements</h1>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main>
         <section class="section achievements-section">
             <div class="container">
 
-                <!-- Summary Stats Block -->
-                <div class="achieve-summary fade-in-up" style="margin-bottom: 60px; text-align: center;">
-                    <h2 class="section-title" style="margin-bottom: 40px;">Our <span class="highlight">Track
-                            Record</span></h2>
-                    <div class="achieve-grid stagger-grid">
-                        <div class="achieve-card">
-                            <h3>58 Awards</h3>
-                            <p>Total awards won across national and international events.</p>
-                        </div>
-                        <div class="achieve-card">
-                            <h3>16 Competitions</h3>
-                            <p>Consistently competing at the highest level since 2015.</p>
-                        </div>
-                        <div class="achieve-card">
-                            <h3>7 Electric Cars</h3>
-                            <p>Pioneering the EV shift in Indian Formula Student.</p>
-                        </div>
-                    </div>
+                <!-- Section Header -->
+                <div class="achievement-header">
+                    <h2>Journey to Excellence</h2>
+                    <p>A decade of engineering innovation, strategic planning, and relentless pursuit of perfection. From humble beginnings to global recognition.</p>
                 </div>
 
-                <div class="timeline">
+                <!-- Achievements Grid -->
+                <div class="achievements-grid">
 
                     <!-- 2026 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="https://live.staticflickr.com/65535/55069652555_2cb4069c4b_b.jpg" alt="Team Kratos Racing Car 2026" class="random-car-img">
+                    <div class="achievement-card">
+                        <span class="card-year">2026</span>
+                        <div class="card-image">
+                            <img src="https://live.staticflickr.com/65535/55069652555_2cb4069c4b_b.jpg" alt="2026 Formula Bharat">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2026</span>
-                            <h3>BPP Rank 3 in Formula Bharat</h3>
-                            <p>AIR 3 at Business Plan Presentation.</p>
+                        <div class="card-content">
+                            <span class="card-rank">📊 Strategic Victory</span>
+                            <h3 class="card-title">BPP Rank 3</h3>
+                            <p class="card-description">AIR 3 at Business Plan Presentation, showcasing strategic innovation and market dominance.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-chart-line"></i> Strategy</div>
+                                <div class="stat-badge"><i class="fas fa-brain"></i> Planning</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">Formula Bharat 2026</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2025 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2025.jpg" alt="Team Kratos Racing Car 2025" >
+                    <div class="achievement-card">
+                        <span class="card-year">2025</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMNdRX6-t8Ao8Kck3qEwzBGNZHK9KvLnickm8Dal0rzCudb-AzZxWymJnRaQ-8Zh5kKOnUO3dF18WnKiRmPRBqKYgKdfsso-57LZBxhUWWtvqRQ5uvIFLCHzc2wrQDuzCsVb8WbwcqBIYDV5opFQB3dGg=w1315-h877-s-no-gm?authuser=0" alt="2025 Champions">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2025</span>
-                            <h3>National Champions (7th Time)</h3>
-                            <p>AIR 1 Overall. Rank 1 in Skidpad, Acceleration, Autocross, Endurance, Efficiency.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🏆 7th Championship</span>
+                            <h3 class="card-title">National Champions</h3>
+                            <p class="card-description">AIR 1 Overall with dominant victories across all categories. Historic achievement in competitive racing.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-trophy"></i> Champion</div>
+                                <div class="stat-badge"><i class="fas fa-star"></i> Dominant</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2024 -->
-                    <div class="timeline-item fade-in-up delay-100">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2024.jpg" alt="Team Kratos Racing Car 2024" >
+                    <div class="achievement-card">
+                        <span class="card-year">2024</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPjCMRtsKicnn1Dx9HyEulZ47A6jyDxw612fPdv2Xgcr5eSLBDe5rZ5v2UGWNmSWfIv5K9cdFtCUkIhC4_h9W3tgM9IspxN1kjXi-msT8NhsBnBnrHH3d7yu-hHZ8B3JNjOoHXhWtx6WkvySNki7pG15Q=w1319-h877-s-no-gm?authuser=0" alt="2024 Design">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2024</span>
-                            <h3>Design & Performance</h3>
-                            <p>AIR 3 Overall. Best Powertrain Award. 2nd Place in Engineering Design.</p>
+                        <div class="card-content">
+                            <span class="card-rank">⚙️ Engineering Excellence</span>
+                            <h3 class="card-title">Design & Performance</h3>
+                            <p class="card-description">AIR 3 Overall with Best Powertrain Award. 2nd in Engineering Design for technical innovation.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-cogs"></i> Powertrain</div>
+                                <div class="stat-badge"><i class="fas fa-cube"></i> Design</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 3 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2023 -->
-                    <div class="timeline-item fade-in-up delay-100">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2023.jpg" alt="Team Kratos Racing Car 2023" >
+                    <div class="achievement-card">
+                        <span class="card-year">2023</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPZ3B4SLuHjIHiSf7gn562s-VKaWAAusNsMaZqnp478JQt3YnG_7JZwnpcu1ad74bnEZmHIS4aqsl7pOqe91fPs7N_VVVYRKTdyfUud6c_JYuvJ7ve3hR7UGDsU-h8I1x5amVwMLcNh7CmbW--EK8eE_A=w1317-h877-s-no-gm?authuser=0" alt="2023 Global">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2023</span>
-                            <h3>World Rank 7</h3>
-                            <p>Formula Student Germany & East. AIR 2 Formula Bharat. Best Battery Pack Design.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🌍 World Rank 7</span>
+                            <h3 class="card-title">Global Recognition</h3>
+                            <p class="card-description">World Rank 7 in Formula Student Germany & East. AIR 2 Formula Bharat. Best Battery Pack Design.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-globe"></i> Global</div>
+                                <div class="stat-badge"><i class="fas fa-battery-full"></i> Battery</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 2 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2022 -->
-                    <div class="timeline-item fade-in-up delay-200">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2022.jpg" alt="Team Kratos Racing Car 2022" >
+                    <div class="achievement-card">
+                        <span class="card-year">2022</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczP3N3acR0MaYXIn6Sc8mcPIPuK1W9YbNZ4uNWXH_1-FOxyJ9ic2XlEe2QWfHe9t-xCJI9UVCOfuDGRx3pNgI32tZ-Nrl9y9n57xvoum_6UoJIUgwXmAg1GrDKeJZ3KJWeQ1Jpei5JjefvfSxZ6KLTOv=w1317-h877-s-no-gm?authuser=0" alt="2022">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2022</span>
-                            <h3>Overall Champions</h3>
-                            <p>AIR 1. Static and Dynamics Winner.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🏆 Champion</span>
+                            <h3 class="card-title">Overall Champions</h3>
+                            <p class="card-description">AIR 1 victory. Dominated both Static and Dynamics categories with comprehensive excellence.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-crown"></i> Winner</div>
+                                <div class="stat-badge"><i class="fas fa-medal"></i> Dominant</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2021 -->
-                    <div class="timeline-item fade-in-up delay-200">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2021.jpg" alt="Team Kratos Racing Car 2021" >
+                    <div class="achievement-card">
+                        <span class="card-year">2021</span>
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/1e293b/00d4ff?text=2021+Champion" alt="2021">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2021</span>
-                            <h3>Overall Champions</h3>
-                            <p>AIR 1. "Best Battery Pack Design".</p>
+                        <div class="card-content">
+                            <span class="card-rank">🏆 Champion</span>
+                            <h3 class="card-title">Overall Champions</h3>
+                            <p class="card-description">AIR 1 title secured with Best Battery Pack Design award for exceptional technical mastery.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-crown"></i> Winner</div>
+                                <div class="stat-badge"><i class="fas fa-zap"></i> Battery</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2020 -->
-                    <div class="timeline-item fade-in-up delay-300">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2020.jpg" alt="Team Kratos Racing Car 2020" >
+                    <div class="achievement-card">
+                        <span class="card-year">2020</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMrk2psYHVg2qpaCzWJJE96AQ8oS0UUmKeNYxI5xUIsKQx30yITMFePScMIgtVfR195CxUyTQZ5bZMpw4MyxAYI8fjxdCSU_A1TLban18Bt7oE1HJdZda8WmZbs_uQkRXbYxceXmtm1uDqOI1iCHOZR=w1317-h877-s-no-gm?authuser=0" alt="2020">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2020</span>
-                            <h3>Innovation Step</h3>
-                            <p>AIR 3. India's First CFRP Monocoque Chassis.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🔬 Breakthrough</span>
+                            <h3 class="card-title">Innovation Milestone</h3>
+                            <p class="card-description">AIR 3. Pioneered India's First CFRP Monocoque Chassis, setting unprecedented engineering standards.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-lightbulb"></i> Innovation</div>
+                                <div class="stat-badge"><i class="fas fa-leaf"></i> Carbon</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 3 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2019 -->
-                    <div class="timeline-item fade-in-up delay-300">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2019.jpg" alt="Team Kratos Racing Car 2019" >
+                    <div class="achievement-card">
+                        <span class="card-year">2019</span>
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/1e293b/00d4ff?text=2019+Record" alt="2019">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2019</span>
-                            <h3>World Record</h3>
-                            <p>AIR 1. Highest Score Achieved in Formula Bharat.</p>
+                        <div class="card-content">
+                            <span class="card-rank">📈 World Record</span>
+                            <h3 class="card-title">Highest Score Ever</h3>
+                            <p class="card-description">AIR 1. Achieved the highest score ever recorded in Formula Bharat history in competitive racing.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-rocket"></i> Record</div>
+                                <div class="stat-badge"><i class="fas fa-chart-area"></i> Peak</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2018 -->
-                    <div class="timeline-item fade-in-up delay-400">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2018.jpg" alt="Team Kratos Racing Car 2018" >
+                    <div class="achievement-card">
+                        <span class="card-year">2018</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczOlsOM3Nj1o0MglEviqdmVjvWivaKP9WJBzL-rfwMLxMrTwqmoWrSQ0BIlagDRFgGAJN344M5cI3WfjDq3CYogEP46ayWe_507434kPdB9O5Hsk4sE2UynNJyDnAysmw4tEmhXt_dt7Rocjk8fd85_H=w1319-h877-s-no-gm?authuser=0" alt="2018">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2018</span>
-                            <h3>Hat-trick Champions</h3>
-                            <p>AIR 1. Record of being 3 Times National Champions.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🏆 Hat-Trick</span>
+                            <h3 class="card-title">3-Time Champions</h3>
+                            <p class="card-description">AIR 1. Achieved the record of being 3-time National Champions, marking consistent excellence.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-crown"></i> Winner</div>
+                                <div class="stat-badge"><i class="fas fa-history"></i> Legacy</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2016-2017 -->
-                    <div class="timeline-item fade-in-up delay-400">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2017.jpg" alt="Team Kratos Racing Car 2016-17" >
+                    <div class="achievement-card">
+                        <span class="card-year">2016-17</span>
+                        <div class="card-image">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMFS8pGkQDPD9z3sGySz2yH-5UrNQS7palnvLYV25JnTtOVgmSJmI8jHh0UClhT6-i60lHQ8KMAj6fXjSeUfOFFrxjd16_pLOYJkaSCimu64DjZ3JNQobjStPzsPK1P2nfdeZCVhaE7srNK-i7773wU=w941-h627-s-no-gm?authuser=0" alt="2016-2017">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2016 - 2017</span>
-                            <h3>Back-to-Back Champions</h3>
-                            <p>AIR 1 in both years. Lightest Vehicle (2016). Static & Dynamics Winner (2017).</p>
+                        <div class="card-content">
+                            <span class="card-rank">🏆 Back-to-Back</span>
+                            <h3 class="card-title">Consecutive Champs</h3>
+                            <p class="card-description">AIR 1 both years. Lightest Vehicle (2016) & Static/Dynamics Winner (2017). Dual excellence.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-crown"></i> Winner</div>
+                                <div class="stat-badge"><i class="fas fa-balance-scale"></i> Lightest</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 1 Both Years</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2015 -->
-                    <div class="timeline-item fade-in-up delay-400">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-img">
-                            <img src="images\cars_images\2015.jpg" alt="Team Kratos Racing Car 2015" >
+                    <div class="achievement-card">
+                        <span class="card-year">2015</span>
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/1e293b/00d4ff?text=The+Beginning" alt="2015">
                         </div>
-                        <div class="timeline-content">
-                            <span class="year">2015</span>
-                            <h3>The Beginning</h3>
-                            <p>Birth of Kratos. Heaviest Vehicle in Event. AIR 32.</p>
+                        <div class="card-content">
+                            <span class="card-rank">🚀 Genesis</span>
+                            <h3 class="card-title">The Beginning</h3>
+                            <p class="card-description">Birth of Kratos. Despite being heaviest vehicle, ranked AIR 32. The journey to excellence begins.</p>
+                            <div class="card-stats">
+                                <div class="stat-badge"><i class="fas fa-fire"></i> Debut</div>
+                                <div class="stat-badge"><i class="fas fa-arrow-up"></i> Growth</div>
+                            </div>
+                            <div class="card-footer">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">AIR 32 Overall</span>
+                                <div class="card-arrow">→</div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </section>
     </main>
 
+    <!-- FOOTER (Original) -->
     <footer>
         <div class="container footer-content">
             <div class="footer-left">
@@ -239,6 +838,7 @@
             </div>
         </div>
     </footer>
+
     <script src="js/main.js"></script>
 </body>
 
