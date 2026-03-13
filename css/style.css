@@ -1999,6 +1999,7 @@ body.light-theme .moon-icon {
 
 .big-socials {
     margin-top: 30px;
+    display: flex; /* Added flex to ensure gap works */
     gap: 25px;
 }
 
@@ -2018,13 +2019,23 @@ body.light-theme .moon-icon {
     background: var(--primary);
     border-color: var(--primary);
     transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .contact-form {
-    background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.03); /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 40px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Distinct white outline */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form:focus-within {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 71, 171, 0.2);
 }
 
 .form-group {
@@ -4230,53 +4241,35 @@ margin-bottom:60px;
 }
 
 }
-/* VIDEO CARD */
+/* EVENT VIDEO SECTION */
 
-.video-card{
-background:linear-gradient(135deg,#000000,#17191c);
-border-radius:14px;
-padding:15px;
-transition:0.3s;
+.event-video-section{
+padding:80px 0;
+text-align:center;
 }
 
-.video-card:hover{
-transform:translateY(-6px);
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-}
-
-.video-card h4{
-margin-top:12px;
+.event-video-desc{
+max-width:700px;
+margin:auto;
+margin-bottom:40px;
+color:#9aa4b2;
 font-size:14px;
-letter-spacing:1px;
 }
 
-/* RESPONSIVE YOUTUBE VIDEO */
-
-.video-wrapper{
-position:relative;
-padding-bottom:56.25%;
-height:0;
-overflow:hidden;
-border-radius:10px;
-}
-
-.video-wrapper iframe{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
+/* GRID */
 
 .video-grid{
-grid-template-columns:1fr;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
 }
 
+
+.management-team{
+text-align:center;
+margin-bottom:50px;
 }
+
 /* Captain Center */
 
 .captain-card{
