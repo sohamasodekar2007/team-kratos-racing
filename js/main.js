@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. PRELOADER LOGIC
     const preloader = document.getElementById('preloader');
-    
+
     if (preloader) {
         // Wait for animations to complete (3 seconds - text finishes at ~2.4s)
         setTimeout(() => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Trigger Hero Animations after preloader is gone
                 triggerHeroAnimations();
             }, 500);
-        }, 4000); 
+        }, 4000);
     } else {
         // If no preloader (subpages), trigger animations immediately
         triggerHeroAnimations();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         child.style.transitionDelay = `${index * 100}ms`; // 100ms delay per item
                         child.classList.add('visible');
                     });
-                     observer.unobserve(entry.target);
+                    observer.unobserve(entry.target);
                 }
             }
         });
@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
     grids.forEach(grid => {
         grid.classList.add('stagger-grid'); // Add marker class
         observer.observe(grid); // Observe the container
-        
+
         // Prepare children
         Array.from(grid.children).forEach(child => {
             child.classList.add('stagger-item');
             // Remove legacy fade classes if present to avoid conflict
-            child.classList.remove('fade-in-up'); 
+            child.classList.remove('fade-in-up');
         });
     });
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. NAVBAR SCROLL EFFECT
     const navbar = document.querySelector('.navbar');
-    
+
     // Check if we are on homepage (transparent to solid) or subpage (always solid)
     // On subpages, we updated the inline style for background, but the class logic is good to keep
     window.addEventListener('scroll', () => {
@@ -89,20 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. ACTIVE LINK HIGHLIGHTING (URL Based)
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
         if (href === currentPath) {
             link.classList.add('active');
         }
-        
+
         // Mobile: Close menu on click
         link.addEventListener('click', () => {
-             const navMenu = document.querySelector('.nav-links');
-             const hamburger = document.querySelector('.hamburger');
-             navMenu.classList.remove('active');
-             hamburger.classList.remove('active');
+            const navMenu = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
         });
     });
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-links');
 
-    if(hamburger) {
+    if (hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -123,26 +123,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let counted = false;
 
     const statsObserver = new IntersectionObserver((entries) => {
-        if(entries[0].isIntersecting && !counted) {
+        if (entries[0].isIntersecting && !counted) {
             counted = true;
             // Support both old (.count) and new (.stat-number) selectors
             document.querySelectorAll('.count, .stat-number').forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const startValue = +counter.getAttribute('data-start') || 0;
                 const duration = +counter.getAttribute('data-duration') || 2000; // ms
-                
+
                 let currentCount = startValue;
                 const startTime = performance.now();
-                
+
                 const updateCounter = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    
+
                     // Easing: easeOutExpo (more dramatic)
                     const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                    
+
                     currentCount = startValue + (target - startValue) * easeProgress;
-                    
+
                     if (progress < 1) {
                         counter.innerText = Math.round(currentCount);
                         requestAnimationFrame(updateCounter);
@@ -155,23 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { threshold: 0.5 });
 
-    if(statsSection) {
+    if (statsSection) {
         statsObserver.observe(statsSection);
     }
 
     // 6. THEME TOGGLE
     const themeToggle = document.getElementById('theme-toggle');
-    
+
     // Check for saved theme preference or default to 'dark'
     const currentTheme = localStorage.getItem('theme') || 'dark';
     if (currentTheme === 'light') {
         document.body.classList.add('light-theme');
     }
-    
-    if(themeToggle) {
+
+    if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
-            
+
             // Save theme preference
             const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
             localStorage.setItem('theme', theme);
@@ -180,14 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. GALLERY LIGHTBOX LOGIC
     const lightbox = document.getElementById('gallery-lightbox');
-    
+
     if (lightbox) {
         const lightboxImg = document.getElementById('lightbox-img');
         const closeBtn = document.querySelector('.lightbox-close');
-        
+
         // Open Lightbox
         document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 const img = this.querySelector('img');
                 if (img) {
                     lightbox.style.display = "flex";
@@ -197,13 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         // Close Lightbox (Button)
         closeBtn.addEventListener('click', () => {
             lightbox.style.display = "none";
             document.body.style.overflow = ''; // Restore scrolling
         });
-        
+
         // Close Lightbox (Click Outside)
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             }
         });
-        
+
         // Close on Escape Key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && lightbox.style.display === "flex") {
@@ -227,63 +227,63 @@ document.addEventListener('DOMContentLoaded', () => {
     if (kineticSection) {
         const trackLeft = document.querySelector('.track-left');
         const trackRight = document.querySelector('.track-right');
-        
+
         let currentScroll = window.scrollY;
         let targetScroll = window.scrollY;
         let skew = 0;
-        
+
         // Physics Configurations
         const ease = 0.075; // Smoothness
-        
+
         function animate() {
             // 1. Calculate Velocity (Skew)
             targetScroll = window.scrollY;
             let diff = targetScroll - currentScroll;
             currentScroll += diff * ease;
-            
+
             let skewForce = diff * 0.15;
-            
+
             // Reduce skew on mobile
             if (window.innerWidth < 768) {
-                skewForce = diff * 0.05; 
+                skewForce = diff * 0.05;
             }
-            
+
             // Clamp skew
             const maxSkew = window.innerWidth < 768 ? 5 : 15;
-            if(skewForce > maxSkew) skewForce = maxSkew;
-            if(skewForce < -maxSkew) skewForce = -maxSkew;
+            if (skewForce > maxSkew) skewForce = maxSkew;
+            if (skewForce < -maxSkew) skewForce = -maxSkew;
 
             // 2. Calculate Centered Position (Parallax)
             // We want the translation to be 0 when the section is in the middle of the viewport
             // sectionOffset is where the section starts.
             // When window.scrollY + window.innerHeight/2 approx equals kineticSection.offsetTop + height/2
-            
+
             const sectionOffset = kineticSection.offsetTop;
             const sectionHeight = kineticSection.offsetHeight;
             const centerPoint = sectionOffset - (window.innerHeight / 2) + (sectionHeight / 2);
-            
+
             // Distance from center
             const dist = window.scrollY - centerPoint;
-            
+
             // Move tracks based on distance from center
             // Track 1 (Left): Moves left as we scroll down
-            const posLeft = dist * -0.5; 
-            
+            const posLeft = dist * -0.5;
+
             // Track 2 (Right): Moves right as we scroll down
             const posRight = dist * 0.5;
-            
+
             // Apply Transforms
-            if(trackLeft) {
+            if (trackLeft) {
                 trackLeft.style.transform = `translate3d(${posLeft}px, 0, 0) skewX(${skewForce}deg)`;
             }
-            
-            if(trackRight) {
+
+            if (trackRight) {
                 trackRight.style.transform = `translate3d(${posRight}px, 0, 0) skewX(${skewForce}deg)`;
             }
 
             requestAnimationFrame(animate);
         }
-        
+
         requestAnimationFrame(animate);
     }
 
@@ -298,19 +298,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const carImages = document.querySelectorAll('.random-car-img');
-    
+
     if (carImages.length > 0) {
         carImages.forEach(img => {
             const randomIndex = Math.floor(Math.random() * achievementImages.length);
             img.src = achievementImages[randomIndex];
-            
+
             // Randomly flip some images for variety
             if (Math.random() > 0.5) {
                 img.style.transform = 'scaleX(-1)';
                 // Note: This might conflict with the hover scale effect.
                 // Better approach: wrap in a div that handles the flip? 
                 // Or just don't flip for now to avoid complexity with the hover zoom.
-                img.style.transform = ''; 
+                img.style.transform = '';
             }
         });
     }
@@ -319,6 +319,53 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('contextmenu', (e) => {
         e.preventDefault();
     });
+
+    // 9. GOOGLE SHEETS FORM SUBMISSION
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzI9zpzPyCVPUq9SZggfgDJAsXJ7onBk-Gcto-AUMwU1M-vyObwsgNqG2BgYhCfrATiGg/exec'; // REPLACE THIS WITH YOUR DEPLOYED WEB APP URL
+    const contactForm = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById("form-message");
+    const submitBtn = document.getElementById("submitButton");
+
+    if (contactForm && msg && submitBtn) {
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Show loading state
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(contactForm) })
+                .then(response => {
+                    msg.style.display = "block";
+                    msg.style.color = "#4CAF50"; // Green for success
+                    msg.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
+                    msg.innerText = "Message sent successfully! We will get back to you soon.";
+
+                    // Reset form and button
+                    contactForm.reset();
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+
+                    // Hide message after 5 seconds
+                    setTimeout(function () {
+                        msg.style.display = "none";
+                        msg.innerText = "";
+                    }, 5000);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    msg.style.display = "block";
+                    msg.style.color = "#f44336"; // Red for error
+                    msg.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
+                    msg.innerText = "Error sending message. Please try again or contact us directly.";
+
+                    // Reset button
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
 
 });
 
