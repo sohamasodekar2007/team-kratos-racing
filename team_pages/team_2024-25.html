@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team 2025-26 | Team Kratos Racing</title>
+    <title>Team 2024-25 | Team Kratos Racing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -103,7 +103,9 @@ gap:30px;
 
 .team-card{
 display:flex;
-height:140px;
+flex-direction: row;
+height:auto;
+min-height: 120px;
 border-radius:14px;
 overflow:hidden;
 
@@ -124,16 +126,19 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 /* IMAGE */
 
 .card-img{
-width:40%;
+width:38%;
+min-height: 120px;
+flex-shrink: 0;
 background-size:cover;
-background-position:center;
+background-position:center top;
 }
 
 /* INFO */
 
 .card-info{
-width:60%;
-padding:18px;
+flex: 1;
+min-width: 0;
+padding:12px 14px;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -151,29 +156,104 @@ font-size:12px;
 color:#b6c2d4;
 }
         
+        .social-links {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-main);
+            color: white;
             transition: all 0.3s ease;
             text-decoration: none;
         }
         
         .social-links a:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 71, 171, 0.4);
+            background: #0077b5;
+            border-color: #0077b5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 119, 181, 0.3);
         }
         
         .social-links a i {
-            font-size: 18px;
+            font-size: 14px;
+        }
+
+        /* Responsive grid */
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+            .team-section {
+                padding: 50px 16px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .team-section {
+                padding: 30px 12px;
+            }
+            .department {
+                margin-bottom: 36px;
+            }
+            .department-title {
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            .department-desc {
+                font-size: 12px;
+                margin-bottom: 20px;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .team-card {
+                min-height: 100px;
+            }
+            .card-img {
+                width: 36%;
+                min-height: 100px;
+            }
+            .card-info {
+                padding: 10px 12px;
+            }
+            .card-info h3 {
+                font-size: 11px;
+                letter-spacing: 1px;
+                margin-bottom: 3px;
+            }
+            .card-info p {
+                font-size: 10px;
+            }
+            .social-links {
+                margin-top: 6px;
+                gap: 8px;
+            }
+            .social-links a {
+                width: 26px;
+                height: 26px;
+            }
+            .social-links a i {
+                font-size: 12px;
+            }
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+            .page-header {
+                height: 26vh;
+                min-height: 180px;
+            }
         }
     </style>
 </head>
@@ -211,7 +291,7 @@ color:#b6c2d4;
 
     <header class="page-header">
         <div class="gradient-overlay"></div>
-        <h1 class="fade-in-up">Team 2025-26</h1>
+        <h1 class="fade-in-up">Team 2024-25</h1>
         <p class="fade-in-up delay-100" style="position: relative; z-index: 2; color: var(--text-muted); margin-top: 10px;"></p>
     </header>
 
@@ -240,6 +320,9 @@ perfect synchronization toward a common goal
 <div class="card-info">
 <h3>OM LONKAR</h3>
 <p>COO</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=OM%20LONKAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -248,6 +331,9 @@ perfect synchronization toward a common goal
 <div class="card-info">
 <h3>INVESH SONAR</h3>
 <p>CAPTAIN </p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=INVESH%20SONAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -256,6 +342,9 @@ perfect synchronization toward a common goal
 <div class="card-info">
 <h3>RUTURAJ PATIL</h3>
 <p>CFO </p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=RUTURAJ%20PATIL%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -265,6 +354,9 @@ perfect synchronization toward a common goal
 <div class="card-info">
 <h3>HARIKRISHNAN </h3>
 <p>ELECRICAL CTO</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=HARIKRISHNAN%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -274,7 +366,10 @@ perfect synchronization toward a common goal
 <div class="card-info">
 <h3>AADINATH KELKAR</h3>
 <p>MECHANICAL CTO</p>
-</div>+
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=AADINATH%20KELKAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
 </div>
 
 
@@ -301,6 +396,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>MANISH MAITY </h3>
 <p> HIGH VOLTAGE LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=MANISH%20MAITY%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -309,6 +407,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>RADHA KARALE </h3>
 <p>LOW VOLTAGE LEAD </p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=RADHA%20KARALE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -317,6 +418,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>NIRBHIK NAVIN</h3>
 <p>DRIVERLESS LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=NIRBHIK%20NAVIN%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -325,6 +429,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>SOHAM PATIL </h3>
 <p>SR.LOW VOLTAGE MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=SOHAM%20PATIL%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 
 </div><div class="team-card">
@@ -332,6 +439,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>SOHAM MALI</h3>
 <p>HIGH VOLTAGE MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=SOHAM%20MALI%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 
 </div><div class="team-card">
@@ -339,6 +449,9 @@ engineers work together to make sure everything runs safely and efficiently.
 <div class="card-info">
 <h3>SHRAWANI KULTHE</h3>
 <p>LOW VOLTAGE MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=SHRAWANI%20KULTHE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 </div>
@@ -362,6 +475,9 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>AADINATH KELKAR</h3>
 <p>CHASSIS LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=AADINATH%20KELKAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -370,6 +486,9 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>RUTURAJ PATIL</h3>
 <p>COMPOSITE LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=RUTURAJ%20PATIL%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -378,6 +497,9 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>DHRUV BHATT</h3>
 <p>AERODYNAMICS LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=DHRUV%20BHATT%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -386,6 +508,9 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>ROHIT SAWANT </h3>
 <p>SR.CHASSIS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=ROHIT%20SAWANT%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -394,14 +519,20 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>UPENDRA PATIL</h3>
 <p>SR.CHASSIS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=UPENDRA%20PATIL%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
 <div class="team-card">
-<div class="card-img" style="background-image:url('https://i.ibb.co/BVTvWBbN/TOGETHERWERISE-8.png')"></div>
+<div class="card-img" style="background-image:url('https://i.ibb.co/PGgJ2CxX/TOGETHERWERISE-10.jpg')"></div>
 <div class="card-info">
 <h3>SURAJ AHER</h3>
 <p>JR. CHASSIS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=SURAJ%20AHER%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -410,24 +541,36 @@ strength, safety and rigidity while maintaining minimal weight.
 <div class="card-info">
 <h3>HARSHWARDHAN PATIL</h3>    
 <p>JR.CHASSIS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=HARSHWARDHAN%20PATIL%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div><div class="team-card">
 <div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
 <div class="card-info">
 <h3>SATYJEETMANE DESHMUKH</h3>
 <p>JR.AERODYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=SATYJEETMANE%20DESHMUKH%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div><div class="team-card">
 <div class="card-img" style="background-image:url('https://i.ibb.co/wZ2VpKdT/TOGETHERWERISE-6.png')"></div>
 <div class="card-info">
 <h3>RAM GOKHALE</h3>
 <p>JR.AERODYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=RAM%20GOKHALE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div></div>
 <div class="team-card">
 <div class="card-img" style="background-image:url('https://i.ibb.co/pj95nZ5C/TOGETHERWERISE-11.jpg')"></div>
 <div class="card-info">
-<h3>KEDAR KAJAVE</h3>
+<h3>KEDAR KHAJAVE</h3>
 <p>JR. AERODYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=KEDAR%20KHAJAVE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -454,6 +597,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>YASHWANT KAMBLE</h3>
 <p>DRIVETRAIN LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=YASHWANT%20KAMBLE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -462,6 +608,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>MAHESH SONUNE</h3>
 <p>SR.DRIVETRAIN MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=MAHESH%20SONUNE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -470,6 +619,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>OMKAR BIRADAR</h3>
 <p>SR.DRIVETRAIN MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=OMKAR%20BIRADAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -497,6 +649,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>HRISHIKESH BARPANDE</h3>
 <p>VEHICLE DYNAMICS LEAD</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=HRISHIKESH%20BARPANDE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -505,6 +660,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>NARAYANEE FARKHADE</h3>
 <p>SR.VEHICLE DYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=NARAYANEE%20FARKHADE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -514,6 +672,9 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>DHRUVA DAMLE</h3>
 <p>SR.VEHICLE DYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=DHRUVA%20DAMLE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
@@ -522,14 +683,20 @@ to the wheels for optimal acceleration and performance.
 <div class="card-info">
 <h3>DEVDATT LAMBE</h3>
 <p>JR.VEHICLE DYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=DEVDATT%20LAMBE%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
 <div class="team-card">
-<div class="card-img" style="background-image:url('https://i.ibb.co/7JRpmj9L/TOGETHERWERISE-7.png')"></div>
+<div class="card-img" style="background-image:url('https://i.ibb.co/5W3TrFDt/image.png')"></div>
 <div class="card-info">
 <h3>ARCHIT SAOKAR</h3>
 <p>JR.VEHICLE DYNAMICS MEMBER</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/search/results/all/?keywords=ARCHIT%20SAOKAR%20Team%20Kratos%20Racing" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
 </div>
 </div>
 
