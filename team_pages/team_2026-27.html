@@ -112,7 +112,9 @@
 
         .team-card {
             display: flex;
-            height: 140px;
+            flex-direction: row;
+            height: auto;
+            min-height: 120px;
             border-radius: 14px;
             overflow: hidden;
 
@@ -131,16 +133,19 @@
         /* IMAGE */
 
         .card-img {
-            width: 40%;
+            width: 38%;
+            min-height: 120px;
+            flex-shrink: 0;
             background-size: cover;
-            background-position: center;
+            background-position: center top;
         }
 
         /* INFO */
 
         .card-info {
-            width: 60%;
-            padding: 18px;
+            flex: 1;
+            min-width: 0;
+            padding: 14px 16px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -162,8 +167,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -180,80 +185,74 @@
         }
 
         .social-links a i {
-            font-size: 18px;
+            font-size: 14px;
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive grid: 2 col on medium, 1 col on small */
         @media (max-width: 900px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+                gap: 14px;
+            }
+            .team-section {
+                padding: 50px 16px;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 560px) {
             .team-section {
                 padding: 30px 12px;
             }
-
             .department {
-                margin-bottom: 40px;
+                margin-bottom: 36px;
             }
-
             .department-title {
-                font-size: 20px;
+                font-size: 18px;
                 letter-spacing: 2px;
             }
-
             .department-desc {
-                font-size: 13px;
-                margin-bottom: 24px;
+                font-size: 12px;
+                margin-bottom: 20px;
             }
-
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 12px;
             }
-
             .team-card {
-                flex-direction: column;
-                height: auto;
-                min-height: unset;
+                min-height: 100px;
             }
-
             .card-img {
-                width: 100%;
-                height: 200px;
-                min-height: 200px;
-                flex-shrink: 0;
+                width: 36%;
+                min-height: 100px;
             }
-
             .card-info {
-                width: 100%;
-                padding: 16px;
-                text-align: center;
+                padding: 10px 12px;
             }
-
             .card-info h3 {
-                font-size: 15px;
+                font-size: 11px;
+                letter-spacing: 1px;
+                margin-bottom: 3px;
             }
-
             .card-info p {
-                font-size: 13px;
+                font-size: 10px;
             }
-
             .social-links {
-                justify-content: center;
-                margin-top: 10px;
+                margin-top: 6px;
+                gap: 8px;
             }
-
+            .social-links a {
+                width: 26px;
+                height: 26px;
+            }
+            .social-links a i {
+                font-size: 12px;
+            }
             .page-header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
-
             .page-header {
-                height: 28vh;
-                min-height: 200px;
+                height: 26vh;
+                min-height: 180px;
             }
         }
     </style>
