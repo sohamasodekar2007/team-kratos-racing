@@ -9,16 +9,351 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/sponsors_style.css">
+    <style>
+        /* =========================================
+           GLOBAL RESET & BASE
+        ========================================= */
+        :root {
+            --bg-dark: #050505;
+            --bg-darker: #000000;
+            --bg-glass: rgba(5, 5, 5, 0.7);
+            --bg-glass-heavy: rgba(5, 5, 5, 0.9);
+            --primary: #0047AB;
+            --primary-glow: rgba(0, 71, 171, 0.6);
+            --secondary: #4da6ff;
+            --accent: #00e5ff;
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --glass-blur: blur(16px);
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+            /* Sponsors page palette */
+            --sp-primary: #ffcc00;
+            --sp-primary-glow: rgba(255, 204, 0, 0.4);
+            --sp-secondary: #00d4ff;
+            --sp-secondary-glow: rgba(0, 212, 255, 0.4);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-darker); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        body, html { overflow-x: hidden; width: 100%; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: all 0.3s var(--ease-smooth); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.4s var(--ease-smooth);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { display: flex; align-items: center; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
+        .logo img { height: 50px; width: auto; object-fit: contain; filter: invert(1) brightness(1.5); transition: filter 0.3s ease; }
+
+        .nav-links { display: flex; gap: 40px; }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--text-main); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0%; height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        /* Dropdown */
+        .dropdown { position: relative; display: inline-block; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-dark);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1002;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            top: 100%; left: 0;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a { color: var(--text-main); padding: 12px 16px; display: block; font-size: 0.9rem; text-align: left; white-space: nowrap; }
+        .dropdown-content a:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--primary); }
+        .dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn-contact { border: 1px solid var(--border-color); padding: 8px 20px; border-radius: 4px; }
+        .btn-contact:hover { background: var(--primary); border-color: var(--primary); color: white; }
+
+        /* Hamburger */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1001; }
+        .hamburger span { display: block; width: 30px; height: 2px; background: white; transition: transform 0.3s ease, opacity 0.3s ease; border-radius: 2px; }
+        .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* Mobile Nav */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 100%; height: 100vh;
+                background: var(--bg-glass-heavy);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: right 0.5s var(--ease-elastic);
+                z-index: 999;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; font-family: var(--font-heading); }
+            .hamburger { display: flex; }
+            .dropdown-content { position: static; background: transparent; box-shadow: none; border: none; text-align: center; padding: 10px 0; display: none; animation: none; }
+            .dropdown.active .dropdown-content { display: block; }
+            .dropdown-content a { font-size: 1.2rem; padding: 8px; color: var(--text-muted); }
+        }
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+        .page-header {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: url('images/landing_image_3.JPG') center/cover no-repeat;
+            margin-bottom: 4rem;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(10,10,11,0.4) 0%, rgba(10,10,11,0.9) 70%, #0a0a0b 100%);
+        }
+
+        .page-header h1 {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fade animation */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* =========================================
+           SPONSORS SECTION
+        ========================================= */
+        .sponsors-section { max-width: 1300px; margin: 0 auto; padding: 4rem 2rem; }
+
+        .sponsor-category { margin-bottom: 8rem; text-align: center; }
+
+        .category-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            color: var(--sp-primary);
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 3px;
+            background: var(--sp-primary);
+            box-shadow: 0 0 15px var(--sp-primary-glow);
+        }
+
+        /* Grids */
+        .sponsor-grid-category {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Sponsor Card */
+        .sponsor-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            aspect-ratio: 16 / 9;
+        }
+
+        .sponsor-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, var(--sp-primary-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-10px);
+            background: #ffffff;
+            border-color: var(--sp-primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .sponsor-card:hover::before { opacity: 0.1; }
+
+        .sponsor-logo {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .sponsor-card:hover .sponsor-logo { transform: scale(1.05); }
+
+        .sponsor-card[data-category="principal"] { padding: 2rem; background: #ffffff; border-color: rgba(0,0,0,0.1); }
+        .sponsor-card[data-category="principal"]:hover { border-color: var(--sp-primary); box-shadow: 0 25px 50px rgba(255,204,0,0.2); }
+        .sponsor-card[data-category="platinum"] { background: #ffffff; border-color: rgba(0,0,0,0.05); }
+        .sponsor-card[data-category="platinum"]:hover { border-color: var(--sp-secondary); box-shadow: 0 25px 50px rgba(0,212,255,0.2); }
+
+        /* =========================================
+           CTA BUTTONS
+        ========================================= */
+        .cta-group { display: flex; justify-content: center; gap: 2rem; }
+
+        .btn { padding: 1.2rem 2.8rem; border-radius: 50px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: var(--transition); }
+        .btn-primary { background: var(--sp-primary); color: #000; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 30px var(--sp-primary-glow); }
+        .btn-secondary { border: 2px solid #fff; color: #fff; }
+        .btn-secondary:hover { background: #fff; color: #000; transform: scale(1.05); }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer { background: #050505; padding: 5rem 2rem; border-top: 1px solid var(--border-light); }
+
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+
+        .footer-left .logo img { height: 50px; margin-bottom: 1.5rem; }
+        .footer-left p { color: var(--text-muted); font-size: 0.9rem; margin: 5px 0; }
+        .footer-right p { color: var(--text-muted); font-size: 0.8rem; }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; letter-spacing: 4px; }
+            .sponsor-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+            .sponsor-grid-category { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+            .footer-content { flex-direction: column; text-align: center; gap: 3rem; }
+            .category-title { font-size: 1.3rem; }
+            .sponsor-category { margin-bottom: 4rem; }
+            .cta-group { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header { height: 45vh; }
+            .page-header h1 { font-size: 1.8rem; letter-spacing: 3px; }
+            .sponsor-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+            .sponsor-grid-category { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .sponsors-section { padding: 2rem 1rem; }
+            .btn { padding: 1rem 2rem; font-size: 0.8rem; }
+        }
+    </style>
 </head>
 
 <body>
@@ -66,7 +401,7 @@
     <main>
         <section class="section sponsors-section">
 
-            <!-- PRINCIPAL SPONSORS -->
+            <!-- TITLE SPONSORS -->
             <div class="sponsor-category fade-in-up">
                 <div class="category-title">Title Sponsors</div>
                 <div class="sponsor-grid-category">
@@ -77,7 +412,7 @@
                         <img src="images/Sponsors_images/Brose.svg" alt="Brose" class="sponsor-logo">
                     </a>
                     <a href="https://www.bosch.com" target="_blank" class="sponsor-card" data-category="principal">
-                        <img src="data:image/jpeg;base64,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" alt="Bosch" class="sponsor-logo">
+                        <img src="images/Sponsors_images/Bosch-logo.svg" alt="Bosch" class="sponsor-logo">
                     </a>
                 </div>
             </div>
@@ -86,13 +421,11 @@
             <div class="sponsor-category fade-in-up">
                 <div class="category-title">Platinum Sponsors</div>
                 <div class="sponsor-grid">
-                    <a href="https://www.aditya-birla-group.com" target="_blank" class="sponsor-card"
-                        data-category="platinum">
-                        <!-- Note: aditya-birla.png was missing in list_dir, using placeholder if needed or assuming it exists elsewhere -->
+                    <a href="https://www.aditya-birla-group.com" target="_blank" class="sponsor-card" data-category="platinum">
                         <img src="https://i.ibb.co/DPm60sYR/image.png" alt="Aditya Birla" class="sponsor-logo">
                     </a>
-                    <a href="https://www.gefran.com" target="_blank" class="sponsor-card" data-category="platinum">
-                        <img src="images\Sponsors_images/rushil.jpg" alt="rushildecor" class="sponsor-logo">
+                    <a href="#" target="_blank" class="sponsor-card" data-category="platinum">
+                        <img src="images/Sponsors_images/rushil.jpg" alt="Rushil Decor" class="sponsor-logo">
                     </a>
                     <a href="https://www.ansys.com" target="_blank" class="sponsor-card" data-category="platinum">
                         <img src="images/Sponsors_images/Ansys_logo_(2019) (1).svg" alt="Ansys" class="sponsor-logo">
@@ -100,9 +433,8 @@
                     <a href="https://www.threebond.com" target="_blank" class="sponsor-card" data-category="platinum">
                         <img src="images/Sponsors_images/thrreebond.png" alt="ThreeBond" class="sponsor-logo">
                     </a>
-                    <!-- NEW SPONSOR FROM IMAGE -->
                     <a href="#" target="_blank" class="sponsor-card" data-category="platinum">
-                        <img src="images\Sponsors_images/rs.png" alt="rs pro" class="sponsor-logo">
+                        <img src="images/Sponsors_images/rs.png" alt="RS Pro" class="sponsor-logo">
                     </a>
                 </div>
             </div>
@@ -123,21 +455,17 @@
                     <a href="https://kineticindia.com" target="_blank" class="sponsor-card" data-category="gold">
                         <img src="images/Sponsors_images/kinetic.jpg" alt="Kinetic" class="sponsor-logo">
                     </a>
-                    <a href="https://www.arrowelectronics.com" target="_blank" class="sponsor-card"
-                        data-category="gold">
-                        <img src="images/Sponsors_images/arrow-electronics.png" alt="Arrow Electronics"
-                            class="sponsor-logo">
+                    <a href="https://www.arrowelectronics.com" target="_blank" class="sponsor-card" data-category="gold">
+                        <img src="images/Sponsors_images/arrow-electronics.png" alt="Arrow Electronics" class="sponsor-logo">
                     </a>
-                    <a href="https://www.altairengineering.com" target="_blank" class="sponsor-card"
-                        data-category="gold">
+                    <a href="https://www.altairengineering.com" target="_blank" class="sponsor-card" data-category="gold">
                         <img src="images/Sponsors_images/altair.png" alt="Altair" class="sponsor-logo">
                     </a>
                     <a href="https://www.aerontech.in" target="_blank" class="sponsor-card" data-category="gold">
                         <img src="images/Sponsors_images/aeron.jpg" alt="Aeron" class="sponsor-logo">
                     </a>
                     <a href="https://www.hyperformance.in" target="_blank" class="sponsor-card" data-category="gold">
-                        <img src="images/Sponsors_images/hyperformance.png" alt="Hyperformance Motorsports"
-                            class="sponsor-logo">
+                        <img src="images/Sponsors_images/hyperformance.png" alt="Hyperformance Motorsports" class="sponsor-logo">
                     </a>
                 </div>
             </div>
@@ -153,12 +481,10 @@
                         <img src="images/Sponsors_images/hirose.png" alt="Hirose Electric" class="sponsor-logo">
                     </a>
                     <a href="https://www.te.com" target="_blank" class="sponsor-card" data-category="silver">
-                        <img src="images/Sponsors_images/te-connectivity.png" alt="TE Connectivity"
-                            class="sponsor-logo">
+                        <img src="images/Sponsors_images/te-connectivity.png" alt="TE Connectivity" class="sponsor-logo">
                     </a>
                     <a href="https://www.analog.com" target="_blank" class="sponsor-card" data-category="silver">
-                        <img src="images/Sponsors_images/Analog_Devices_Logo.svg" alt="Analog Devices"
-                            class="sponsor-logo">
+                        <img src="images/Sponsors_images/Analog_Devices_Logo.svg" alt="Analog Devices" class="sponsor-logo">
                     </a>
                     <a href="https://www.vactech.co.in" target="_blank" class="sponsor-card" data-category="silver">
                         <img src="images/Sponsors_images/vactech.jpeg" alt="Vactech" class="sponsor-logo">
@@ -169,11 +495,9 @@
                     <a href="https://www.rs-online.com" target="_blank" class="sponsor-card" data-category="silver">
                         <img src="images/Sponsors_images/rs-components.png" alt="RS Components" class="sponsor-logo">
                     </a>
-                    <a href="https://www.epitomecomponents.com" target="_blank" class="sponsor-card"
-                        data-category="silver">
+                    <a href="https://www.epitomecomponents.com" target="_blank" class="sponsor-card" data-category="silver">
                         <img src="images/Sponsors_images/epitome.png" alt="Epitome Components" class="sponsor-logo">
                     </a>
-                    <!-- NEW SPONSORS FROM IMAGE -->
                     <a href="#" target="_blank" class="sponsor-card" data-category="silver">
                         <img src="images/Sponsors_images/rbm-lubricants.png" alt="RBM Lubricants" class="sponsor-logo">
                     </a>
@@ -187,36 +511,28 @@
             <div class="sponsor-category fade-in-up">
                 <div class="category-title">Supporting Partners</div>
                 <div class="sponsor-grid">
-                    <a href="https://www.tradesyndicate.in" target="_blank" class="sponsor-card"
-                        data-category="partner">
-                        <img src="images/Sponsors_images/trade-syndicate.png" alt="Trade Syndicate"
-                            class="sponsor-logo">
+                    <a href="https://www.tradesyndicate.in" target="_blank" class="sponsor-card" data-category="partner">
+                        <img src="images/Sponsors_images/trade-syndicate.png" alt="Trade Syndicate" class="sponsor-logo">
                     </a>
                     <a href="https://www.xpsindia.com" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/XPS-logo-Photoroom.png" alt="XPS" class="sponsor-logo">
                     </a>
-                    <a href="https://www.motionrobotics.in" target="_blank" class="sponsor-card"
-                        data-category="partner">
-                        <img src="images/Sponsors_images/MOTION ROBOTICS.png" alt="Motion Robotics"
-                            class="sponsor-logo">
+                    <a href="https://www.motionrobotics.in" target="_blank" class="sponsor-card" data-category="partner">
+                        <img src="images/Sponsors_images/MOTION ROBOTICS.png" alt="Motion Robotics" class="sponsor-logo">
                     </a>
                     <a href="https://machinespace.in" target="_blank" class="sponsor-card" data-category="partner">
-                        <img src="images/Sponsors_images/Machinespace_Logo_New.png" alt="Machinespace"
-                            class="sponsor-logo">
+                        <img src="images/Sponsors_images/Machinespace_Logo_New.png" alt="Machinespace" class="sponsor-logo">
                     </a>
-                    <a href="https://www.caelumelectronics.co.in" target="_blank" class="sponsor-card"
-                        data-category="partner">
+                    <a href="https://www.caelumelectronics.co.in" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/caelum.png" alt="Caelum Electronics" class="sponsor-logo">
                     </a>
-                    <a href="https://www.positronadditive.com" target="_blank" class="sponsor-card"
-                        data-category="partner">
+                    <a href="https://www.positronadditive.com" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/POSITRON.png" alt="Positron" class="sponsor-logo">
                     </a>
                     <a href="https://www.spmcastings.com" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/SPM CASTING.jpeg" alt="SPM Casting" class="sponsor-logo">
                     </a>
-                    <a href="https://nextwavetechnologies.in" target="_blank" class="sponsor-card"
-                        data-category="partner">
+                    <a href="https://nextwavetechnologies.in" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/Nextwave Logo.png" alt="Nextwave" class="sponsor-logo">
                     </a>
                     <a href="https://yojak.org" target="_blank" class="sponsor-card" data-category="partner">
@@ -231,7 +547,6 @@
                     <a href="https://www.tsw.in" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/tsw.png" alt="TSW" class="sponsor-logo">
                     </a>
-                    <!-- NEW SPONSORS FROM IMAGE -->
                     <a href="#" target="_blank" class="sponsor-card" data-category="partner">
                         <img src="images/Sponsors_images/am-lubricants.png" alt="AM Lubricants" class="sponsor-logo">
                     </a>
@@ -239,8 +554,7 @@
                         <img src="images/Sponsors_images/technonicol.png" alt="Technonicol" class="sponsor-logo">
                     </a>
                     <a href="#" target="_blank" class="sponsor-card" data-category="partner">
-                        <img src="images/Sponsors_images/magod.png" alt="Magod Fusion Technologies"
-                            class="sponsor-logo">
+                        <img src="images/Sponsors_images/magod.png" alt="Magod Fusion Technologies" class="sponsor-logo">
                     </a>
                 </div>
             </div>
@@ -259,7 +573,7 @@
         <div class="footer-content">
             <div class="footer-left">
                 <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Team Kratos Racing" style="height: 40px;">
+                    <img src="logo.png" alt="Team Kratos Racing" style="height: 40px;">
                 </a>
                 <div>
                     <p>#TOGETHER WE RISE!!</p>
@@ -272,9 +586,63 @@
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
-    <script src="js/sponsors_script.js"></script>
+    <!-- ========== ALL JAVASCRIPT INLINED ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. NAVBAR SCROLL EFFECT
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 2. HAMBURGER MENU
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-links');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Close menu when nav link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // 3. SCROLL ANIMATIONS (Intersection Observer)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+            // 4. DISABLE RIGHT CLICK
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+
+        });
+    </script>
 
 </body>
 
