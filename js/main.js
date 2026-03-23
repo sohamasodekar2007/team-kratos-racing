@@ -225,8 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. GOD-TIER KINETIC SCROLL (Velocity + Skew + Lerp)
     const kineticSection = document.querySelector('.kinetic-scroll-section');
     if (kineticSection) {
-        const trackLeft = document.querySelector('.track-left');
-        const trackRight = document.querySelector('.track-right');
+        const tracksLeft = document.querySelectorAll('.track-left');
+        const tracksRight = document.querySelectorAll('.track-right');
 
         let currentScroll = window.scrollY;
         let targetScroll = window.scrollY;
@@ -254,10 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (skewForce < -maxSkew) skewForce = -maxSkew;
 
             // 2. Calculate Centered Position (Parallax)
-            // We want the translation to be 0 when the section is in the middle of the viewport
-            // sectionOffset is where the section starts.
-            // When window.scrollY + window.innerHeight/2 approx equals kineticSection.offsetTop + height/2
-
             const sectionOffset = kineticSection.offsetTop;
             const sectionHeight = kineticSection.offsetHeight;
             const centerPoint = sectionOffset - (window.innerHeight / 2) + (sectionHeight / 2);
@@ -266,20 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const dist = window.scrollY - centerPoint;
 
             // Move tracks based on distance from center
-            // Track 1 (Left): Moves left as we scroll down
             const posLeft = dist * -0.5;
-
-            // Track 2 (Right): Moves right as we scroll down
             const posRight = dist * 0.5;
 
             // Apply Transforms
-            if (trackLeft) {
-                trackLeft.style.transform = `translate3d(${posLeft}px, 0, 0) skewX(${skewForce}deg)`;
-            }
+            tracksLeft.forEach(track => {
+                track.style.transform = `translate3d(${posLeft}px, 0, 0) skewX(${skewForce}deg)`;
+            });
 
-            if (trackRight) {
-                trackRight.style.transform = `translate3d(${posRight}px, 0, 0) skewX(${skewForce}deg)`;
-            }
+            tracksRight.forEach(track => {
+                track.style.transform = `translate3d(${posRight}px, 0, 0) skewX(${skewForce}deg)`;
+            });
 
             requestAnimationFrame(animate);
         }
@@ -368,4 +361,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
