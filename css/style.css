@@ -3723,11 +3723,10 @@ body.light-theme .hamburger span {
    GOD-TIER KINETIC SHOWCASE (Velocity Control)
    ========================================= */
 .kinetic-scroll-section {
-    padding: 100px 0;
+    padding: 30px 0;
     overflow: hidden;
     position: relative;
     background: #000;
-    /* Deep space background */
 }
 
 /* Background Grid Effect */
@@ -3763,7 +3762,7 @@ body.light-theme .hamburger span {
     z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 8vh; /* Vertical spacing between tracks */
+    gap: 3vh; /* Reduced vertical spacing */
 }
 
 /* TRACK SYSTEM */
@@ -3786,12 +3785,12 @@ body.light-theme .hamburger span {
 /* TYPOGRAPHY */
 .kinetic-text {
     font-family: 'Batman Forever', sans-serif;
-    font-size: 10rem;
+    font-size: 5rem; /* Reduced from 10rem */
     line-height: 1;
     text-transform: uppercase;
     font-weight: 900;
-    letter-spacing: -5px;
-    transition: all 0.1s linear; /* Smooth micro-adjustments */
+    letter-spacing: -2px;
+    transition: all 0.1s linear;
 }
 
 .kinetic-text.outline {
@@ -3807,12 +3806,12 @@ body.light-theme .hamburger span {
 /* IMAGE WRAPPER */
 .kinetic-image-wrapper {
     position: relative;
-    width: 600px;
-    height: 350px;
-    border-radius: 4px; /* Brutalist sharp or slightly rounded */
+    width: 350px; /* Reduced from 600px */
+    height: 200px; /* Reduced from 350px */
+    border-radius: 4px;
     overflow: hidden;
-    transform: perspective(1000px) rotateY(0deg); /* Prep for 3D */
-    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8);
+    transform: perspective(1000px) rotateY(0deg);
+    box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: #111;
 }
@@ -3864,16 +3863,16 @@ body.light-theme .hamburger span {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .kinetic-text { font-size: 7rem; }
-    .kinetic-image-wrapper { width: 450px; height: 280px; }
-    .kinetic-group { gap: 40px; }
+    .kinetic-text { font-size: 4rem; }
+    .kinetic-image-wrapper { width: 300px; height: 180px; }
+    .kinetic-group { gap: 30px; }
 }
 
 @media (max-width: 768px) {
-    .kinetic-text { font-size: 4rem; -webkit-text-stroke: 1px rgba(255,255,255,0.2); }
-    .kinetic-image-wrapper { width: 90vw; max-width: 320px; height: 200px; }
-    .kinetic-group { gap: 20px; }
-    .kinetic-container { gap: 5vh; }
+    .kinetic-text { font-size: 2.5rem; -webkit-text-stroke: 1px rgba(255,255,255,0.2); }
+    .kinetic-image-wrapper { width: 80vw; max-width: 280px; height: 160px; }
+    .kinetic-group { gap: 15px; }
+    .kinetic-container { gap: 3vh; }
 }
 
 @media (max-width: 480px) {
