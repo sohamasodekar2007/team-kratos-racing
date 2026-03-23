@@ -4309,3 +4309,80 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
+
+
+/* PCCOE Section */
+.institute-section {
+    background: radial-gradient(circle at center, rgba(0, 119, 255, 0.08), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.institute-container {
+    display: flex;
+    justify-content: center;
+}
+
+.institute-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1100px;
+}
+
+.institute-logo {
+    position: relative;
+}
+
+.institute-logo img {
+    width: 600px;
+    max-width: 100%;
+    height: auto;
+    filter: none; /* FIX */
+   
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--primary), transparent);
+    opacity: 0.3;
+    filter: blur(40px);
+}
+
+.institute-text h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+}
+
+.institute-text p {
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.institute-highlights {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.institute-highlights span {
+    border: 1px solid var(--primary);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    color: var(--primary);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .institute-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
