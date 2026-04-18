@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 9. GOOGLE SHEETS FORM SUBMISSION
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzI9zpzPyCVPUq9SZggfgDJAsXJ7onBk-Gcto-AUMwU1M-vyObwsgNqG2BgYhCfrATiGg/exec'; // REPLACE THIS WITH YOUR DEPLOYED WEB APP URL
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwx9YGUbFnj5Yv8ThujMD8zrgORXUFbQi1nb1wpC3r8_HFBaf-fQodRu4psfg7jFL9S3A/exec';
     const contactForm = document.forms['submit-to-google-sheet'];
     const msg = document.getElementById("form-message");
     const submitBtn = document.getElementById("submitButton");
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     msg.style.display = "block";
                     msg.style.color = "#f44336"; // Red for error
                     msg.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
-                    msg.innerText = "Error sending message. Please try again or contact us directly.";
+                    msg.innerText = "Error sending message. Please try again or support us directly.";
 
                     // Reset button
                     submitBtn.innerText = originalBtnText;
