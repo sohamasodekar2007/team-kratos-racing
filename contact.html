@@ -282,7 +282,10 @@
     <script>
 function payUpi(upiId) {
     // Direct payment link - opens in UPI app/phonepe/gpay
-    window.open('upi://pay?pa=' + upiId + '&pn=Team Kratos Racing&am=100&cu=INR');
+const amount = prompt('Enter donation amount (₹):', '500'); 
+if (amount && !isNaN(amount) && amount > 0) {
+    window.open('upi://pay?pa=' + upiId + '&pn=Team Kratos Racing&am=' + amount + '&cu=INR');
+}
 }
 
         // Donate Form Handler
