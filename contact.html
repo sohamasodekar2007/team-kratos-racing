@@ -199,7 +199,10 @@
                         <div class="qr-section">
                             <h3><i class="fas fa-qrcode"></i> Scan & Pay via UPI</h3>
 <img src="qrcode/qr.png" alt="UPI QR Code" class="qr-image" style="width:200px;height:200px;margin:0 auto 20px;border-radius:12px;">
-                            <div class="upi-id">7020884080@idfcfirst</div>
+<div class="upi-id" onclick="payUpi('7020884080@idfcfirst')">
+        7020884080@idfcfirst 
+        <i class="fas fa-copy" style="margin-left:8px"></i>
+    </div>
                             <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);">Instant. Secure. Supports UPI Apps.</p>
                         </div>
                         
@@ -277,6 +280,11 @@
 
     <script src="js/main.js"></script>
     <script>
+function payUpi(upiId) {
+    // Direct payment link - opens in UPI app/phonepe/gpay
+    window.open('upi://pay?pa=' + upiId + '&pn=Team Kratos Racing&am=100&cu=INR');
+}
+
         // Donate Form Handler
         document.getElementById('donateForm').addEventListener('submit', function(e) {
             e.preventDefault();
