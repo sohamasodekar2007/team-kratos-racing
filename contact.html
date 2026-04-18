@@ -36,11 +36,16 @@
         }
         .donate-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 60px;
             margin-bottom: 80px;
+            align-items: stretch;
         }
         .donate-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -59,22 +64,21 @@
             color: var(--primary);
         }
         .qr-image {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #333, #555);
-            margin: 0 auto 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 24px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            display: block;
         }
         .click-here-upi-btn {
             display: block;
             width: 100%;
-            margin: 12px auto 12px;
-            padding: 12px 18px;
+            margin: 12px auto;
+            padding: 14px 18px;
             background: linear-gradient(135deg, var(--primary), #005bb5);
             color: white;
             border: none;
@@ -94,13 +98,19 @@
         .upi-id {
             background: rgba(0,0,0,0.5);
             border: 1px solid var(--primary);
-            padding: 12px;
+            padding: 14px;
             text-align: center;
             font-family: monospace;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             letter-spacing: 1px;
-            border-radius: 8px;
+            border-radius: 12px;
             color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .upi-id:hover {
+            transform: translateY(-2px);
+            background: rgba(0,0,0,0.65);
         }
         .donate-form h3 {
             margin-bottom: 25px;
@@ -113,17 +123,22 @@
             margin-bottom: 20px;
         }
         .donate-form input, .donate-form select, .donate-form textarea {
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255,255,255,0.2);
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255,255,255,0.18);
             color: white;
-            border-radius: 8px;
-            transition: border-color 0.3s;
+            border-radius: 12px;
+            transition: border-color 0.3s, transform 0.2s ease;
         }
         .donate-form input:focus, .donate-form select:focus, .donate-form textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,71,171,0.1);
+            box-shadow: 0 0 0 3px rgba(0,71,171,0.12);
+            transform: translateY(-1px);
+        }
+        .donate-form textarea {
+            min-height: 140px;
+            resize: vertical;
         }
         .donate-form button {
             width: 100%;
@@ -137,11 +152,29 @@
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
         .donate-form button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 30px rgba(0,71,171,0.4);
+        }
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+        .form-row.full-width {
+            grid-template-columns: 1fr;
+        }
+        .form-row.full-width button {
+            width: 100%;
+        }
+        .donate-form .full-width {
+            grid-column: 1 / -1;
+        }
+        .section {
+            padding: 80px 0;
         }
         .why-grid, .benefits-grid {
             display: grid;
@@ -219,49 +252,54 @@
                     <div class="donate-card fade-in-up">
                         <div class="qr-section">
                             <h3><i class="fas fa-qrcode"></i> Scan & Pay via UPI</h3>
-<img src="https://i.ibb.co/B2JnmYZZ/qr.jpg" alt="UPI QR Code" class="qr-image" style="width:200px;height:200px;margin:0 auto 20px;border-radius:12px;">
-<button class="click-here-upi-btn" onclick="payUpi('7020884080@idfcfirst')">
-    Click here to pay direct via UPI
-</button>
-<div class="upi-id" onclick="payUpi('7020884080@idfcfirst')">
-        7020884080@idfcfirst 
-        <i class="fas fa-copy" style="margin-left:8px"></i>
-    </div>
-                            <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);">Instant. Secure. Supports UPI Apps.</p>
+                            <img src="https://i.ibb.co/B2JnmYZZ/qr.jpg" alt="UPI QR Code" class="qr-image">
+                            <button type="button" class="click-here-upi-btn" onclick="payUpi('7020884080@idfcfirst')">
+                           CLCK HERE TO PAY WITH UPI
+                            </button>
+                            <div class="upi-id" onclick="copyUpi('7020884080@idfcfirst')" title="Tap to copy UPI ID">
+                                7020884080@idfcfirst
+                                <i class="fas fa-copy" style="margin-left:8px"></i>
+                            </div>
+                            <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);">Scan the code or tap the UPI ID to copy. Use any UPI app for instant payment.</p>
                         </div>
-                        
                     </div>
 
                     <!-- Donate Form -->
                     <div class="donate-card fade-in-up">
-<form class="donate-form" id="donateForm" name="submit-to-google-sheet">
+                        <form class="donate-form" id="donateForm" name="submit-to-google-sheet">
                             <h3><i class="fas fa-heart"></i> Complete Donation</h3>
-                            <div id="form-message" style="display: none; padding: 10px; margin-bottom: 15px; border-radius: 5px; text-align: center; font-weight: bold;"></div>
-<div class="form-row">
+                            <div id="form-message" style="display: none; padding: 12px 15px; margin-bottom: 25px; border-radius: 10px; text-align: center; font-weight: 700;"></div>
+                            <div class="form-row">
                                 <input type="text" name="name" placeholder="Full Name *" required>
                                 <input type="text" name="company" placeholder="Company Name (Optional)">
-                                <input type="email" name="email" placeholder="Email *" required>
                             </div>
-                            <input type="tel" name="phone" placeholder="Phone Number">
-                            <input type="number" name="amount" placeholder="Amount (₹) *" min="100" required>
-                            <select name="method" required>
-                            
-                                <option value="upi">UPI</option>
-                                <option value="bank">Bank Transfer</option>
-                                <option value="sponsor">Sponsor Package</option>
-                            </select>
-                            <input type="text" name="txid" placeholder="Transaction ID *" required>
-                            <textarea name="message" rows="3" placeholder="Message (Optional)"></textarea>
-                            <button type="submit" id="submitButton">Submit Donation <i class="fas fa-arrow-right"></i></button>
+                            <div class="form-row">
+                                <input type="email" name="email" placeholder="Email *" required>
+                                <input type="tel" name="phone" placeholder="Phone Number">
+                            </div>
+                            <div class="form-row">
+                                <input type="number" name="amount" placeholder="Amount (₹) *" min="100" required>
+                                <select name="method" required>
+                                    <option value="upi">UPI</option>
+                                    <option value="bank">Bank Transfer</option>
+                                    <option value="sponsor">Sponsor Package</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" name="txid" placeholder="Transaction ID *" required>
+                            </div>
+                            <div class="form-row full-width">
+                                <textarea class="full-width" name="message" rows="3" placeholder="Message (Optional)"></textarea>
+                            </div>
+                            <div class="form-row full-width">
+                                <button type="submit" id="submitButton">Submit Donation <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-
-        
-        <!-- Sponsor Benefits -->
-       
+    </main>
     <footer>
         <div class="container footer-content">
             <div class="footer-left">
@@ -277,24 +315,37 @@
 
     <script src="js/main.js"></script>
     <script>
-function payUpi(upiId) {
-    // Direct payment link - opens in UPI app/phonepe/gpay
-window.open('upi://pay?pa=' + upiId + '&pn=Team Kratos Racing&cu=INR');
-}
+        function payUpi(upiId) {
+            const upiUrl = 'upi://pay?pa=' + encodeURIComponent(upiId) + '&pn=Team Kratos Racing&cu=INR';
+            window.open(upiUrl, '_blank');
+        }
 
-        // Donate Form Handler
-        document.getElementById('donateForm').addEventListener('submit', function(e) {
+        function copyUpi(upiId) {
+            navigator.clipboard.writeText(upiId)
+                .then(() => showFormMessage('UPI ID copied to clipboard', 'success'))
+                .catch(() => showFormMessage('Unable to copy UPI ID. Please copy manually.', 'error'));
+        }
+
+        function showFormMessage(message, type) {
+            const banner = document.getElementById('form-message');
+            banner.style.display = 'block';
+            banner.textContent = message;
+            banner.style.backgroundColor = type === 'success' ? 'rgba(0, 103, 255, 0.16)' : 'rgba(255, 85, 85, 0.14)';
+            banner.style.color = type === 'success' ? '#d5f0ff' : '#ffd3d3';
+            banner.style.border = type === 'success' ? '1px solid rgba(77, 166, 255, 0.35)' : '1px solid rgba(255, 102, 102, 0.35)';
+            clearTimeout(showFormMessage.timeoutId);
+            showFormMessage.timeoutId = setTimeout(() => {
+                banner.style.display = 'none';
+            }, 4200);
+        }
+
+        document.getElementById('donateForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-            alert('Thank you for your generous donation! We received:\n\n' + 
-                  `Amount: ₹${data.amount}\nMethod: ${data.method}\nTxID: ${data.txid}\nName: ${data.name}\nEmail: ${data.email}\n\nWe\\'ll contact you soon for sponsor benefits!`);
+            showFormMessage('Thank you! Donation details received successfully.', 'success');
+            console.log('Donation submitted:', data);
             this.reset();
-            function copyUpi() {
-  navigator.clipboard.writeText('7020884080@idfcfirst');
-  // Toast feedback: "Copied to clipboard!"
-}
-
         });
     </script>
 </body>
