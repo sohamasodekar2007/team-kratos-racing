@@ -362,9 +362,11 @@
             banner.style.color = type === 'success' ? '#d5f0ff' : '#ffd3d3';
             banner.style.border = type === 'success' ? '1px solid rgba(77, 166, 255, 0.35)' : '1px solid rgba(255, 102, 102, 0.35)';
             clearTimeout(showFormMessage.timeoutId);
+            // Show error messages longer (8 seconds) than success messages (4.2 seconds)
+            const timeout = type === 'error' ? 8000 : 4200;
             showFormMessage.timeoutId = setTimeout(() => {
                 banner.style.display = 'none';
-            }, 4200);
+            }, timeout);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -383,13 +385,41 @@
                     console.error('Submit button not found.');
                     return;
                 }
+
+                // Client-side validation
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                // Validate required fields
+                if (!data.name || !data.email || !data.amount || !data.txid || !data.method) {
+                    showFormMessage('❌ All required fields must be filled. Please check your form.', 'error');
+                    return;
+                }
+
+                // Validate amount (must be > 0)
+                const amount = parseFloat(data.amount);
+                if (isNaN(amount) || amount <= 0) {
+                    showFormMessage('❌ Amount must be greater than ₹0.', 'error');
+                    return;
+                }
+
+                // Validate email format
+                if (!data.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    showFormMessage('❌ Please enter a valid email address.', 'error');
+                    return;
+                }
+
+                // Validate transaction ID (at least 3 characters)
+                if (data.txid.length < 3) {
+                    showFormMessage('❌ Transaction ID must be at least 3 characters long.', 'error');
+                    return;
+                }
+
+                // All validation passed - proceed with submission
+                console.log('Form data prepared:', data);
                 const originalText = submitButton.innerHTML;
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
                 submitButton.disabled = true;
-
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
-                console.log('Form data prepared:', data);
 
                 // Always send to Google Sheets via Apps Script
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbyuAh-Bk7ny_WWaIs0C6xdq6yOWu01lcu61-H6zofdRmUQb3eACa-PDnNZaTpBeHMgp-w/exec';
