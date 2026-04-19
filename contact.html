@@ -16,7 +16,35 @@
         .donate-hero {
             text-align: center;
             padding: 100px 20px;
-            background: linear-gradient(135deg, rgba(0, 71, 171, 0.1) 0%, transparent 100%);
+            background: 
+                linear-gradient(135deg, rgba(0, 71, 171, 0.8) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 50, 150, 0.8) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(0,71,171,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(0,0,0,0.3);stop-opacity:1" /></linearGradient></defs><rect width="1200" height="600" fill="url(%23g1)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .donate-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 50%, rgba(0, 71, 171, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .donate-hero > .container {
+            position: relative;
+            z-index: 1;
         }
         .donate-hero h2 {
             font-family: 'Orbitron', sans-serif;
@@ -339,13 +367,65 @@
             }, 4200);
         }
 
-        document.getElementById('donateForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            showFormMessage('Thank you! Donation details received successfully.', 'success');
-            console.log('Donation submitted:', data);
-            this.reset();
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('Donate page script loaded. Form submit handler attaching.');
+            const donateForm = document.getElementById('donateForm');
+            if (!donateForm) {
+                console.error('Donate form element not found.');
+                return;
+            }
+
+            donateForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                console.log('Donate form submit triggered.');
+                const submitButton = document.getElementById('submitButton');
+                if (!submitButton) {
+                    console.error('Submit button not found.');
+                    return;
+                }
+                const originalText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitButton.disabled = true;
+
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                console.log('Form data prepared:', data);
+
+                // Always send to Google Sheets via Apps Script
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyPZl5lChCMJo3WiQ7A818WhDlXW2sISTDGy_wxj1cnGHu1MIUryIy97cHkgBeN5hD4VQ/exec';
+                console.log('Sending to Apps Script URL:', scriptUrl);
+
+                const bodyString = new URLSearchParams(data).toString();
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: bodyString
+                })
+                .then(response => {
+                    console.log('Fetch completed:', response);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.status);
+                    }
+                    return response.text();
+                })
+                .then(responseText => {
+                    console.log('Apps Script response text:', responseText);
+                    showFormMessage('Thank you! Donation details saved successfully.', 'success');
+                    console.log('Donation submitted:', data);
+                    this.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showFormMessage('Error saving donation details. Please try again.', 'error');
+                })
+                .finally(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                });
+            });
         });
     </script>
 </body>
