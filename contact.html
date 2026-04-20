@@ -22,6 +22,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            
             position: relative;
             min-height: 500px;
             display: flex;
@@ -310,11 +311,8 @@
                                 <select name="method" required>
                                     <option value="upi">UPI</option>
                                     <option value="bank">Bank Transfer</option>
-                                    <option value="sponsor">Sponsor Package</option>
+                                    
                                 </select>
-                            </div>
-                            <div class="form-row">
-                                <input type="text" name="txid" placeholder="Transaction ID *" required>
                             </div>
                             <div class="form-row full-width">
                                 <textarea class="full-width" name="message" rows="3" placeholder="Message (Optional)"></textarea>
@@ -391,7 +389,7 @@
                 const data = Object.fromEntries(formData);
 
                 // Validate required fields
-                if (!data.name || !data.email || !data.amount || !data.txid || !data.method) {
+                if (!data.name || !data.email || !data.amount || !data.method) {
                     showFormMessage('❌ All required fields must be filled. Please check your form.', 'error');
                     return;
                 }
@@ -406,12 +404,6 @@
                 // Validate email format
                 if (!data.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
                     showFormMessage('❌ Please enter a valid email address.', 'error');
-                    return;
-                }
-
-                // Validate transaction ID (at least 3 characters)
-                if (data.txid.length < 3) {
-                    showFormMessage('❌ Transaction ID must be at least 3 characters long.', 'error');
                     return;
                 }
 
