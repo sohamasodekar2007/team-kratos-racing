@@ -306,7 +306,7 @@
                                 <input type="tel" name="phone" placeholder="Phone Number">
                             </div>
                             <div class="form-row">
-                                <input type="number" name="amount" placeholder="Amount (₹) *" min="100" required>
+                                <input type="number" name="amount" placeholder="Amount (₹) *" min="0" required>
                                 <select name="method" required>
                                     <option value="upi">UPI</option>
                                     <option value="bank">Bank Transfer</option>
@@ -396,10 +396,10 @@
                     return;
                 }
 
-                // Validate amount (must be > 0)
+                // Validate amount (must be >= ₹0)
                 const amount = parseFloat(data.amount);
-                if (isNaN(amount) || amount <= 0) {
-                    showFormMessage('❌ Amount must be greater than ₹0.', 'error');
+                if (isNaN(amount) || amount < 0) {
+                    showFormMessage('❌ Amount must be ₹0 or greater.', 'error');
                     return;
                 }
 
@@ -422,7 +422,7 @@
                 submitButton.disabled = true;
 
                 // Always send to Google Sheets via Apps Script
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyuAh-Bk7ny_WWaIs0C6xdq6yOWu01lcu61-H6zofdRmUQb3eACa-PDnNZaTpBeHMgp-w/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbz72JevNQlHSz-b1S3aFOM8xcbTvL75hKr8trp3WpOGL1ke_H0J9-09zVrrYxpfbH7oDg/exec';
                 console.log('Sending to Apps Script URL:', scriptUrl);
 
                 const bodyString = new URLSearchParams(data).toString();
